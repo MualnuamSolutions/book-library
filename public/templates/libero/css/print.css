@@ -1,0 +1,37 @@
+#student_idcard {
+	width:360px;
+	border:1px solid #111;
+	height:280px;
+}
+#student_idcard .idcard-header {
+	background-color: rgb(27, 118, 178);
+	padding: 8px 0;
+	width: 100%;
+	text-align: center;
+}
+#student_idcard .idcard-header span {
+	display: block;
+	color: #fff;
+	font-family: Arial;
+	font-size: 13px;
+	line-height: 18px;
+}
+#student_idcard .idcard-photo {
+	font-size: 115px; /*paih leh tur*/
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+	text-align: center;
+	margin: 15px 0 0 10px;
+	color:rgb(27, 118, 178, 1);
+	float: left;
+}
+#student_idcard .idcard-detail {
+	margin: 15px 0 0 15px;
+}
+#student_idcard .idcard-detail table {
+	width:100%;
+}
+#student_idcard .idcard-detail table td {
+	padding: 0 4px;
+}
