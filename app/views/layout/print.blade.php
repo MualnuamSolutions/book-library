@@ -4,10 +4,11 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>{{get_setting('site_title')}}</title>
 	<!--ICONS-->
-	<link type="text/css" href="{{ asset('templates/libero/icons/font-awesome/css/font-awesome.css') }}" rel="stylesheet">
+	<link href="{{ asset('templates/hyper/fonts/font-awesome/css/font-awesome.min.css?v=4.0.3')}}" rel="stylesheet">
 	<!--CUSTOM CSS-->
-	<link media="screen, print" type="text/css" href="{{ asset('templates/libero/css/print.css') }}" rel="stylesheet" />
-</head>
+	<link media="screen, print" type="text/css" href="{{ asset('templates/css/print.css') }}" rel="stylesheet" />
+	<script src="{{ asset('templates/hyper/js/libs/jquery-1.10.2.min.js')}}"></script>
+	<script src="{{ asset('lib/jquery-barcode.min.js') }}"></script></head>
 <body>
 @yield('content')
 </body>

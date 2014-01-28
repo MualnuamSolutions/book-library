@@ -25,7 +25,9 @@ class AuthController extends \BaseController {
 			}	
 		}
 		else {
-			dd('Invalid');
+			Auth::logout();
+			Session::flush();
+			return Redirect::to('auth')->with('login_failed', 'Login failed!');
 		}
 	}
 

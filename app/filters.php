@@ -38,6 +38,21 @@ Route::filter('auth', function()
 	if (Auth::guest()) return Redirect::guest('auth');
 });
 
+Route::filter('principal', function()
+{
+	if ( Auth::guest() )
+		return Redirect::guest('auth');
+	else if ( Auth::check() && Auth::user()->role != 'principal' ) 
+		return App::abort(401);
+});
+
+Route::filter('administrator', function()
+{
+	if ( Auth::guest() )
+		return Redirect::guest('auth');
+	else if ( Auth::check() && Auth::user()->role != 'administrator' )
+		return App::abort(401);
+});
 
 Route::filter('auth.basic', function()
 {

@@ -8,13 +8,4 @@ class Setting extends Eloquent {
 	 */
 	protected $table = 'settings';
 
-	/**
-	 * Get the setting data.
-	 *
-	 * @return string
-	 */
-	public function getData()
-	{
-		return $this->setting_data;
-	}
 }

@@ -36,10 +36,26 @@ App::error(function($exception, $code)
     }
 });
 
-Route::get('/', array('before'=>'auth', function()
-{
+Route::get('/', function(){
 	return View::make('home.index');
-}));
+});
 
 Route::controller('auth', 'AuthController');
-Route::resource('idcard', 'IdcardController');
+
+Route::group(['before' => 'auth|principal'], function() {
+    Route::resource('idcard', 'IdcardController');
+    Route::get('print-idcard/{id}', function($id){
+        return View::make('idcard.print.main', array('id'=>$id));
+    });
+    Route::get('dashboard', 'DashboardController@principal');
+});
+
+Route::group(['before' => 'auth|administrator'], function() {
+    Route::get('dashboard', 'DashboardController@administrator');
+    Route::resource('member', 'MemberController');
+    Route::get('idcard-detail/{card_no}', function($card_no){
+        return View::make('idcard.detail.main', array('card_no'=>$card_no));
+    });
+    Route::controller('settings', 'SettingController');
+    Route::resource('user', 'UserController');
+});

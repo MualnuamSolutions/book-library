@@ -8,8 +8,15 @@ class UserTableSeeder extends Seeder
 			'username' => 'admin',
 			'fullname' => 'Administrator',
 			'password' => Hash::make('pass'),
-			'avatar' => '',
+			'avatar' => 'avatar/default-white.png',
 			'role' => 'administrator'
+			));
+		User::create(array(
+			'username' => 'principal',
+			'fullname' => 'Principal',
+			'password' => Hash::make('pass'),
+			'avatar' => 'avatar/default-white.png',
+			'role' => 'principal'
 			));
 	}
 }

@@ -7,7 +7,7 @@ class SettingTableSeeder extends Seeder
 		
 		Setting::create(array(
 			'setting_key' => 'site_title',
-			'setting_data' => 'DIET Library Management Software',
+			'setting_data' => 'Mualnuam Library Management Software',
 			));
 
 		Setting::create(array(
@@ -22,7 +22,12 @@ class SettingTableSeeder extends Seeder
 
 		Setting::create(array(
 			'setting_key' => 'logo',
-			'setting_data' => 'logo/logo.jpg',
+			'setting_data' => '',
+			));
+
+		Setting::create(array(
+			'setting_key' => 'copyright',
+			'setting_data' => '&copy; Mualnuam Solutions',
 			));
 	}
 }
