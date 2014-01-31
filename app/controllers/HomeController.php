@@ -22,13 +22,13 @@ class HomeController extends \BaseController {
 			->orderBy('created_at', 'desc')
 			->get();
 
-		$categories_options = array('0'=>'All Categories', '1'=>'No Category');
-		$categories = Category::where('id','<>', '1')->orderBy('category_name', 'asc')->get();
+		$categories_options = array(''=>'All');
+		$categories = Category::orderBy('category_name', 'asc')->get();
 		foreach($categories as $category)
 			$categories_options[$category->id] = $category->category_name;
 
-		$publishers_options = array('0'=>'All Publishers', '1'=>'No Publisher');
-		$publishers = Publisher::where('id','<>', '1')->orderBy('publisher_name', 'asc')->get();
+		$publishers_options = array(''=>'All');
+		$publishers = Publisher::orderBy('publisher_name', 'asc')->get();
 		foreach($publishers as $publisher)
 			$publishers_options[$publisher->id] = $publisher->publisher_name;
 
@@ -42,7 +42,6 @@ class HomeController extends \BaseController {
 
 	public function search()
 	{
-		// dd(Input::all());
 		$books = Book::join('authors', function($join){
 				$join->on('books.author_id','=','authors.id');
 			})
@@ -60,23 +59,23 @@ class HomeController extends \BaseController {
 					});
 				}
 				
-				if(Input::get('category_id', '0') != '0')
+				if(Input::get('category_id', '') != '')
 					$query->where('books.category_id', '=', Input::get('category_id'));
 
-				if(Input::get('publisher_id', '0') != '0')
+				if(Input::get('publisher_id', '') != '')
 					$query->where('books.publisher_id', '=', Input::get('publisher_id'));
 			})
 			->select('books.*', 'authors.author_name', 'publishers.publisher_name', 'categories.category_name')
 			->orderBy('books.created_at', 'desc')
 			->get();
 
-		$categories_options = array('0'=>'All Categories', '1'=>'No Category');
-		$categories = Category::where('id','<>', '1')->orderBy('category_name', 'asc')->get();
+		$categories_options = array(''=>'All');
+		$categories = Category::orderBy('category_name', 'asc')->get();
 		foreach($categories as $category)
 			$categories_options[$category->id] = $category->category_name;
 
-		$publishers_options = array('0'=>'All Publishers', '1'=>'No Publisher');
-		$publishers = Publisher::where('id','<>', '1')->orderBy('publisher_name', 'asc')->get();
+		$publishers_options = array(''=>'All');
+		$publishers = Publisher::orderBy('publisher_name', 'asc')->get();
 		foreach($publishers as $publisher)
 			$publishers_options[$publisher->id] = $publisher->publisher_name;
 

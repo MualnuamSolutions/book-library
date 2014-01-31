@@ -21,7 +21,7 @@
 	</ul>
 </nav>
 
-<nav class="navbar navbar-inverse user-notification">
+<!-- <nav class="navbar navbar-inverse user-notification">
 	<div class="">
 		<ul class="nav navbar-nav">
 			<li class="dropdown">
@@ -43,7 +43,7 @@
 			</li>
 		</ul>
 	</div>
-</nav>
+</nav> -->
 
 <nav class="side-nav">
 	<ul class="nav nav-pills nav-stacked">
@@ -60,19 +60,14 @@
 				Dashboard
 			</a>
 		</li>
+		
+		<li {{Request::path() == 'issue/new'?'class="active"':''}}><a href="{{url('issue/new')}}"><i class="fa fa-cogs"></i> New Issue</a></li>
 
-		<li>
-			<a href="#issue_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
-				<i class="fa fa-cogs"></i>
-				Issue <b class="caret"></b>
-			</a>
-			<ul class="panel-collapse collapse {{Request::is('issue*')?'in':''}}" id="issue_menu">
-				<li {{Request::path() == 'issue/new'?'class="active"':''}}><a href="{{url('issue/new')}}"><i class="fa fa-arrow-right"></i> New Issue</a></li>
-				<li {{Request::path() == 'issue/return'?'class="active"':''}}><a href="{{url('issue/return')}}"><i class="fa fa-arrow-right"></i> Return</a></li>
-				<li {{Request::path() == 'issue'?'class="active"':''}}><a href="{{url('issue')}}"><i class="fa fa-arrow-right"></i> Issue List</a></li>
-			</ul>
-		</li>
-
+		<li {{Request::path() == 'issue'?'class="active"':''}}><a href="{{url('issue')}}"><i class="fa fa-list"></i> Issue Records</a></li>
+		
+		<li {{Request::path() == 'issue/return'?'class="active"':''}}><a href="{{url('issue/return')}}"><i class="fa fa-reply"></i> Return</a></li>
+		
+		
 		<li>
 			<a href="#book_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
 				<i class="fa fa-book"></i>

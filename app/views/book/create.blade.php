@@ -144,8 +144,8 @@
 										
 										{{ Form::text('category_new', Input::old('category_new'), array('autocomplete'=>'off', 'id'=>'category_new', 'placeholder'=>'Enter new category or subject', 'class'=>(Input::old('new_category')?'':'hidden ') . 'form-control')) }}
 										
-										@if($errors->has('category_new'))
-										<p class="help-block text-danger">New category field is required</p>
+										@if($errors->has('category_new') || $errors->has('category_id'))
+										<p class="help-block text-danger">Category field is required</p>
 										@endif
 										
 										{{ Form::hidden('new_category', 0, array("id"=>"new_category")) }}
@@ -170,8 +170,8 @@
 
 										{{ Form::text('author_new', Input::old('author_new'), array('autocomplete'=>'off', 'id'=>'author_new', 'placeholder'=>'Enter new author', 'class'=>(Input::old('new_author')?'':'hidden ') . 'form-control')) }}
 										
-										@if($errors->has('author_new'))
-										<p class="help-block text-danger">New author field is required</p>
+										@if($errors->has('author_new') || $errors->has('author_id'))
+										<p class="help-block text-danger">Author field is required</p>
 										@endif
 										
 										{{ Form::hidden('new_author', '0', array("id"=>"new_author")) }}
@@ -195,8 +195,8 @@
 
 										{{ Form::text('publisher_new', Input::old('publisher_new'), array('autocomplete'=>'off', 'id'=>'publisher_new', 'placeholder'=>'Enter new publisher', 'class'=>(Input::old('new_author')?'':'hidden ') . 'form-control')) }}
 										
-										@if($errors->has('publisher_new'))
-										<p class="help-block text-danger">New publisher field is required</p>
+										@if($errors->has('publisher_new') || $errors->has('publisher_id'))
+										<p class="help-block text-danger">Publisher field is required</p>
 										@endif
 
 										{{ Form::hidden('new_publisher', '0', array("id"=>"new_publisher")) }}

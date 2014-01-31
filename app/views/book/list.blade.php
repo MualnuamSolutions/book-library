@@ -50,6 +50,7 @@
 							<th>Classification</th>
 							<th>Author</th>
 							<th>Copies</th>
+							<th>Status</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -63,7 +64,6 @@
 							<td>{{$book->classification}}</td>
 							<td>{{$book->author->author_name}}</td>
 							<td>{{$book->copies}}</td>
-							
 							<td>
 							@if( $book->deleted_at != null )
 								<span class="label label-danger">deleted</span>
@@ -71,6 +71,7 @@
 								<span class="label label-success">active</span>
 							@endif
 							</td>
+
 							<td class="action">
 								{{Form::open(array('url'=>url('book', array($book->id)), 'method'=>'delete'))}}
 								

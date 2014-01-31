@@ -25,6 +25,7 @@ class BookController extends \BaseController {
 		$search_criteria = array(
 			'search' => Input::get('search', null),
 			'status' => Input::get('status', 'active'),
+			'category_id' => Input::get('category_id', 0),
 			'classification_no' => Input::get('classification_no', null),
 			'limit' => $limit
 			);
@@ -50,16 +51,16 @@ class BookController extends \BaseController {
 					$query->where('classification_no', 'LIKE', Input::get('classification_no') . "%");
 				}
 
-				if( Input::get('category_id', null) != null ) {
+				if( Input::get('category_id', 0) != 0 ) {
 					$query->where('category_id', '=', Input::get('category_id') );
 				}
 
-				if( Input::get('status', 'active') != null ) {
+				if( Input::get('status', 'active') != '' ) {
 					if( Input::get('status') == 'deleted' ) {
 						$query->where('books.deleted_at', '!=', "NULL");
 					}
 					elseif( Input::get('status', 'active') == 'active' ) {
-						$query->where('books.deleted_at', '=', null);
+						$query->where('books.deleted_at','=', null);
 					}
 				}
 
@@ -114,6 +115,9 @@ class BookController extends \BaseController {
 			'published_year' => 'numeric|min:1000|max:3000',
 			'pages' => 'required|numeric|min:1',
 			'copies' => 'required|numeric|min:1',
+			'category_id' => 'required_if:new_category,0',
+			'author_id' => 'required_if:new_author,0',
+			'publisher_id' => 'required_if:new_publisher,0',
 			'category_new' => 'required_if:new_category,1',
 			'author_new' => 'required_if:new_author,1',
 			'publisher_new' => 'required_if:new_publisher,1'
