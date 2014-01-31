@@ -14,6 +14,7 @@ class CreateAuthorsTable extends Migration {
 		Schema::create('authors', function($table){
 			$table->increments('id');
 			$table->string('author_name');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

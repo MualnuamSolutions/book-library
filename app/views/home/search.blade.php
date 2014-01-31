@@ -8,10 +8,10 @@
 	<div class="container">
 
 		<div class="row">
-			<div class="col-sm-6">
+			<div class="col-sm-7">
 				<div class="panel panel-default browse-books">
 					<div class="panel-heading">
-						<h3 class="panel-title">Books Recently Added</h3>
+						<h3 class="panel-title">Search Results</h3>
 						<span title="Expand All" class="expand-all tooltip-top pull-right btn btn-success btn-xs"><i class="fa fa-level-down"></i></span>
 						<span title="Collapse All" class="collapse-all tooltip-top pull-right btn btn-primary btn-xs hidden"><i class="fa fa-level-up"></i></span>
 					</div>
@@ -27,12 +27,12 @@
 											<tr>
 												<td align="right" width="20%"><i>Author</i></td>
 												<td align="center" width="10px">:</td>
-												<td>{{isset($book->author)?$book->author->author_name:'N/A'}}</td>
+												<td>{{$book->author_name}}</td>
 											</tr>
 											<tr>
 												<td align="right" width="20%"><i>Category</i></td>
 												<td align="center" width="10px">:</td>
-												<td>{{isset($book->category)?$book->category->category_name:'N/A'}}</td>
+												<td>{{($book->category_id != 0)?$book->category_name:'N/A'}}</td>
 											</tr>
 											<tr>
 												<td align="right" width="20%"><i>Edition</i></td>
@@ -42,7 +42,7 @@
 											<tr>
 												<td align="right" width="20%"><i>Publisher</i></td>
 												<td align="center" width="10px">:</td>
-												<td>{{isset($book->publisher)?$book->publisher->publisher_name:'N/A'}}</td>
+												<td>{{($book->publisher_id != 0)?$book->publisher_name:'N/A'}}</td>
 											</tr>
 											<tr>
 												<td align="right" width="20%"><i>Volume</i></td>
@@ -81,9 +81,7 @@
 				</div>
 			</div>
 
-
-
-			<div class="col-sm-6">
+			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<h3 class="panel-title">Search Books</h3>
@@ -92,16 +90,16 @@
 						{{ Form::open(array('url'=>'/', 'method'=>'post', 'class'=>'form form-vertical')) }}
 						<div class="form-group">
 							{{ Form::label('category_id', 'Category') }}
-							{{ Form::select('category_id', $categories, Input::old('category_id', 0), array('id'=>'category_id', 'class'=>'form-control')) }}
+							{{ Form::select('category_id', $categories, Input::get('category_id', 0), array('id'=>'category_id', 'class'=>'form-control')) }}
 						</div>
 
 						<div class="form-group">
 							{{ Form::label('publisher_id', 'Publisher') }}
-							{{ Form::select('publisher_id', $publishers, Input::old('publisher_id', 0), array('id'=>'publisher_id', 'class'=>'form-control')) }}
+							{{ Form::select('publisher_id', $publishers, Input::get('publisher_id', 0), array('id'=>'publisher_id', 'class'=>'form-control')) }}
 						</div>
 
 						<div class="form-group">
-							{{ Form::text('search', Input::get('search'), array('placeholder'=>'Book Title', 'id'=>'search_string', 'class'=>'form-control')) }}
+							{{ Form::text('search', Input::get('search'), array('placeholder'=>'Title, Author', 'id'=>'search_string', 'class'=>'form-control')) }}
 						</div>
 
 					  	<button type="submit" class="btn btn-primary" name="find">Find</button>

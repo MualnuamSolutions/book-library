@@ -256,3 +256,28 @@ SECTION: MEMBER **/
 }
 /**
 END SECTION: MEMBER **/
+/**
+SECTION: BOOKS **/
+.browse-books .panel-heading span.btn {
+	margin: 9px 5px 0 0;
+}
+.browse-books ol {
+	list-style-position: outside;
+	padding: 0 0 0 20px;
+}
+.browse-books li {
+	padding: 15px 0 10px;
+	margin: 0 0 10px;
+	border-bottom: 1px solid #eee;
+	position: relative;
+}
+.browse-books li .book-title {
+	cursor: pointer;
+}
+.browse-books li small.created_at {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+/**
+END SECTION: BOOKS **/

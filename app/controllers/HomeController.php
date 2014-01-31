@@ -15,9 +15,77 @@ class HomeController extends \BaseController {
 	|
 	*/
 
-	public function showWelcome()
+	public function index()
 	{
-		return View::make('hello');
+		$books = Book::with('author', 'publisher', 'category')
+			->where(DB::raw('DATEDIFF(NOW(), created_at)'), '<=', '10')
+			->orderBy('created_at', 'desc')
+			->get();
+
+		$categories_options = array('0'=>'All Categories', '1'=>'No Category');
+		$categories = Category::where('id','<>', '1')->orderBy('category_name', 'asc')->get();
+		foreach($categories as $category)
+			$categories_options[$category->id] = $category->category_name;
+
+		$publishers_options = array('0'=>'All Publishers', '1'=>'No Publisher');
+		$publishers = Publisher::where('id','<>', '1')->orderBy('publisher_name', 'asc')->get();
+		foreach($publishers as $publisher)
+			$publishers_options[$publisher->id] = $publisher->publisher_name;
+
+
+		return View::make('home.index', array(
+			'books' => $books,
+			'categories' => $categories_options,
+			'publishers' => $publishers_options
+			));
+	}
+
+	public function search()
+	{
+		// dd(Input::all());
+		$books = Book::join('authors', function($join){
+				$join->on('books.author_id','=','authors.id');
+			})
+			->join('publishers', function($join){
+				$join->on('books.publisher_id','=','publishers.id');
+			})
+			->join('categories', function($join){
+				$join->on('books.category_id','=','categories.id');
+			})
+			->where(function($query){
+				if(Input::get('search', null) != null) {
+					$query->where(function($q1){
+						$q1->where('books.title', 'LIKE', '%'.Input::get('search').'%');
+						$q1->orWhere('authors.author_name', 'LIKE', '%'.Input::get('search').'%');
+					});
+				}
+				
+				if(Input::get('category_id', '0') != '0')
+					$query->where('books.category_id', '=', Input::get('category_id'));
+
+				if(Input::get('publisher_id', '0') != '0')
+					$query->where('books.publisher_id', '=', Input::get('publisher_id'));
+			})
+			->select('books.*', 'authors.author_name', 'publishers.publisher_name', 'categories.category_name')
+			->orderBy('books.created_at', 'desc')
+			->get();
+
+		$categories_options = array('0'=>'All Categories', '1'=>'No Category');
+		$categories = Category::where('id','<>', '1')->orderBy('category_name', 'asc')->get();
+		foreach($categories as $category)
+			$categories_options[$category->id] = $category->category_name;
+
+		$publishers_options = array('0'=>'All Publishers', '1'=>'No Publisher');
+		$publishers = Publisher::where('id','<>', '1')->orderBy('publisher_name', 'asc')->get();
+		foreach($publishers as $publisher)
+			$publishers_options[$publisher->id] = $publisher->publisher_name;
+
+
+		return View::make('home.search', array(
+			'books' => $books,
+			'categories' => $categories_options,
+			'publishers' => $publishers_options
+			));
 	}
 
 }

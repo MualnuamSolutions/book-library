@@ -16,7 +16,7 @@
 body {
   background-color: #ffffff;
   color: #333333;
-  font-family: 'Noto Sans', 'Roboto', 'Helvetica Neue', Helvetica, Arial, san-serif;
+  font-family: Arial; /*'Noto Sans', 'Roboto', 'Helvetica Neue', Helvetica, san-serif*/
   font-size: 12px;
 }
 h1 {

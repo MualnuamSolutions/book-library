@@ -53,4 +53,17 @@ $(function(){
 		if($(this).val() != '')
 			$(this).closest('.form-group').removeClass('has-error');
 	});
+
+	$('.browse-books .book-title').on('click', function(){
+		$(this).next().toggleClass('hidden');
+	});
+
+	$('.browse-books .panel-heading span.btn').on('click', function(){
+		$('.browse-books .panel-heading span.btn.expand-all, .browse-books .panel-heading span.btn.collapse-all').toggleClass('hidden');
+		
+		if($(this).hasClass('expand-all'))
+			$('.browse-books .book-title').next().removeClass('hidden');
+		else if($(this).hasClass('collapse-all'))
+			$('.browse-books .book-title').next().addClass('hidden');
+	});
 });

@@ -14,7 +14,7 @@ class CreatePublishersTable extends Migration {
 		Schema::create('publishers', function($table){
 			$table->increments('id');
 			$table->string('publisher_name');
-			$table->string('publisher_isbn');
+			$table->softDeletes();
 			$table->timestamps();
 		});
 	}

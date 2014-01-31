@@ -13,20 +13,22 @@ class CreateBooksTable extends Migration {
 	{
 		Schema::create('books', function($table){
 			$table->increments('id');
-			$table->string('book_title');
-			$table->string('acc_no');
-			$table->string('edition');
-			$table->integer('pages');
-			$table->integer('language_id');
-			$table->string('isbn_10');
-			$table->string('isbn_13');
+			$table->string('barcode')->nullable();
+			$table->string('title');
+			$table->integer('category_id');
+			$table->string('classification_no')->nullable();
+			$table->string('accession_no');
+			$table->integer('author_id');
+			$table->string('edition')->nullable();
+			$table->integer('publisher_id');
+			$table->string('published_year',4)->nullable();
+			$table->integer('pages')->nullable();
+			$table->string('volume')->nullable();
+			$table->string('isbn_no')->nullable();
 			$table->integer('copies');
-			$table->integer('shelf_no');
-			$table->integer('row_no');
-			$table->date('published_date');
-			$table->integer('author_id')->nullable();
-			$table->integer('publisher_id')->nullable();
-			$table->integer('category_id')->nullable();
+			$table->string('shelf_no');
+			$table->string('row_no');
+
 			$table->softDeletes();
 			$table->timestamps();
 		});

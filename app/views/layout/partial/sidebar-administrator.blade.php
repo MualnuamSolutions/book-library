@@ -62,6 +62,18 @@
 		</li>
 
 		<li>
+			<a href="#issue_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
+				<i class="fa fa-cogs"></i>
+				Issue <b class="caret"></b>
+			</a>
+			<ul class="panel-collapse collapse {{Request::is('issue*')?'in':''}}" id="issue_menu">
+				<li {{Request::path() == 'issue/new'?'class="active"':''}}><a href="{{url('issue/new')}}"><i class="fa fa-arrow-right"></i> New Issue</a></li>
+				<li {{Request::path() == 'issue/return'?'class="active"':''}}><a href="{{url('issue/return')}}"><i class="fa fa-arrow-right"></i> Return</a></li>
+				<li {{Request::path() == 'issue'?'class="active"':''}}><a href="{{url('issue')}}"><i class="fa fa-arrow-right"></i> Issue List</a></li>
+			</ul>
+		</li>
+
+		<li>
 			<a href="#book_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
 				<i class="fa fa-book"></i>
 				Book <b class="caret"></b>
@@ -69,14 +81,45 @@
 			<ul class="panel-collapse collapse {{Request::is('book*')?'in':''}}" id="book_menu">
 				<li {{Request::path() == 'book/create'?'class="active"':''}}><a href="{{url('book/create')}}"><i class="fa fa-arrow-right"></i> New Entry</a></li>
 				<li {{Request::path() == 'book'?'class="active"':''}}><a href="{{url('book')}}"><i class="fa fa-arrow-right"></i> Book List</a></li>
-				<li {{Request::path() == 'book'?'class="active"':''}}><a href="{{url('book')}}"><i class="fa fa-arrow-right"></i> Categories</a></li>
-				<li {{Request::path() == 'book'?'class="active"':''}}><a href="{{url('book')}}"><i class="fa fa-arrow-right"></i> Subject</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<a href="#category_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
+				<i class="fa fa-star"></i>
+				Category <b class="caret"></b>
+			</a>
+			<ul class="panel-collapse collapse {{Request::is('category*')?'in':''}}" id="category_menu">
+				<li {{Request::path() == 'category/create'?'class="active"':''}}><a href="{{url('category/create')}}"><i class="fa fa-arrow-right"></i> New Category</a></li>
+				<li {{Request::path() == 'category'?'class="active"':''}}><a href="{{url('category')}}"><i class="fa fa-arrow-right"></i> Category List</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<a href="#author_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
+				<i class="fa fa-user"></i>
+				Author <b class="caret"></b>
+			</a>
+			<ul class="panel-collapse collapse {{Request::is('author*')?'in':''}}" id="author_menu">
+				<li {{Request::path() == 'author/create'?'class="active"':''}}><a href="{{url('author/create')}}"><i class="fa fa-arrow-right"></i> New Author</a></li>
+				<li {{Request::path() == 'author'?'class="active"':''}}><a href="{{url('author')}}"><i class="fa fa-arrow-right"></i> Author List</a></li>
+			</ul>
+		</li>
+
+		<li>
+			<a href="#publisher_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
+				<i class="fa fa-rocket"></i>
+				Publisher <b class="caret"></b>
+			</a>
+			<ul class="panel-collapse collapse {{Request::is('publisher*')?'in':''}}" id="publisher_menu">
+				<li {{Request::path() == 'publisher/create'?'class="active"':''}}><a href="{{url('publisher/create')}}"><i class="fa fa-arrow-right"></i> Pew publisher</a></li>
+				<li {{Request::path() == 'publisher'?'class="active"':''}}><a href="{{url('publisher')}}"><i class="fa fa-arrow-right"></i> Publisher List</a></li>
 			</ul>
 		</li>
 
 		<li>
 			<a href="#member_menu" data-toggle="collapse" data-parent=".side-nav" class="collapsed">
-				<i class="fa fa-credit-card"></i>
+				<i class="fa fa-group"></i>
 				Member <b class="caret"></b>
 			</a>
 			<ul class="panel-collapse collapse {{Request::is('member*')?'in':''}}" id="member_menu">

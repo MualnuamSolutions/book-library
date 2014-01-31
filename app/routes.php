@@ -36,9 +36,8 @@ App::error(function($exception, $code)
     }
 });
 
-Route::get('/', function(){
-	return View::make('home.index');
-});
+Route::get('/', 'HomeController@index');
+Route::post('/', 'HomeController@search');
 
 Route::controller('auth', 'AuthController');
 
@@ -58,4 +57,8 @@ Route::group(['before' => 'auth|administrator'], function() {
     });
     Route::controller('settings', 'SettingController');
     Route::resource('user', 'UserController');
+    Route::resource('book', 'BookController');
+    Route::resource('author', 'AuthorController');
+    Route::resource('publisher', 'PublisherController');
+    Route::resource('category', 'CategoryController');
 });
