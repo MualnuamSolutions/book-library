@@ -18,7 +18,8 @@ class IdcardController extends \BaseController {
 			'limit' => $limit
 			);
 
-		$idcards = Idcard::where(function($query){
+		$idcards = Idcard::withTrashed()
+					->where(function($query){
 						if( Input::get('type', null) != null )
 							$query->where('type', '=', Input::get('type', null));
 						
@@ -29,7 +30,7 @@ class IdcardController extends \BaseController {
 							});
 						}
 
-						if( Input::get('validity', null) != null ) {
+						if( Input::get('validity', '') != '' ) {
 							if( Input::get('validity') == 'valid' ) {
 								$query->where(function($q2){
 									$q2->where('type', '=', 'faculty')
@@ -248,6 +249,7 @@ class IdcardController extends \BaseController {
 			$idcard->present_address = $input_data['tm_present_address'];
 			$idcard->permanent_address = $input_data['tm_permanent_address'];
 			$idcard->date_of_issue = date('Y-m-d', strtotime($input_data['tm_date_of_issue']));
+			$idcard->valid_upto = date('Y-m-d', strtotime($input_data['tm_valid_upto']));
 			$idcard->save();
 
 			if(Input::hasFile('tm_picture')) {
@@ -423,6 +425,7 @@ class IdcardController extends \BaseController {
 			$idcard->present_address = $input_data['tm_present_address'];
 			$idcard->permanent_address = $input_data['tm_permanent_address'];
 			$idcard->date_of_issue = date('Y-m-d', strtotime($input_data['tm_date_of_issue']));
+			$idcard->valid_upto = date('Y-m-d', strtotime($input_data['tm_valid_upto']));
 			$idcard->save();
 
 			if(Input::hasFile('tm_picture')) {
@@ -439,13 +442,39 @@ class IdcardController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
+	 * When ID Card is deleted, member is also deleted along with all member transactions history.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		dd('a');
+		$restore = Input::get('restore', null);
+		$delete = Input::get('delete', null);
+		$forceDelete = Input::get('force', null);
+
+		$idcard = Idcard::withTrashed()->find($id);
+
+		if($idcard) {
+			if($delete) {
+				$idcard->delete();
+				Member::withTrashed()->where('card_no','=',$idcard->card_no)->delete();
+				return Redirect::route("idcard.index")->with('success',"Library ID Card was deleted.");
+			}
+			elseif($restore) {
+				$idcard->restore();
+				Member::withTrashed()->where('card_no','=',$idcard->card_no)->restore();
+				return Redirect::route("idcard.index")->with('success',"Library ID Card was restored.");
+			}
+			elseif($forceDelete) {
+				$idcard->forceDelete();
+				Member::withTrashed()->where('card_no','=',$idcard->card_no)->forceDelete();
+				return Redirect::route("idcard.index")->with('success',"Library ID Card was deleted permanently.");
+			}
+		}
+		else {
+			return Redirect::route("idcard.index")->with('danger',"Delete failed. ID Card not found.");
+		}
 	}
 
 }

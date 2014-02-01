@@ -62,8 +62,20 @@
 							</td>
 							<td class="action">
 								{{Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'delete'))}}
-								<a class="btn btn-success btn-xs tooltip-top" title="Edit detail" href="{{url('idcard', array($idcard->id,'edit')) }}"><i class="fa fa-pencil"></i> Edit</a>
-								<button class="tooltip-top btn btn-danger btn-xs delete-button" title="Delete ID card" type="submit" name="idcard_id" value="{{$idcard->id}}"><i class="fa fa-times"></i> Delete</button>
+								
+								@if($idcard->deleted_at == null)
+								<a title="Edit ID Card" class="tooltip-top btn btn-success btn-xs" href="{{url('idcard', array($idcard->id, 'edit'))}}"><i class="fa fa-pencil"></i> Edit</a>
+								@endif
+
+								@if($idcard->deleted_at != null)
+								<button class="tooltip-top btn btn-primary btn-xs restore-button" title="Restore Book" type="submit" name="restore" value="{{$idcard->id}}"><i class="fa fa-undo"></i> Restore</button>
+								@endif
+								
+								@if($idcard->deleted_at == null)
+								<button class="tooltip-top btn btn-danger btn-xs" title="Delete Book" type="submit" name="delete" value="{{$idcard->id}}"><i class="fa fa-times"></i> Delete</button>
+								@endif
+
+								<button class="tooltip-top btn btn-danger btn-xs force-delete-button" title="Delete Book Permanently" type="submit" name="force" value="{{$idcard->id}}"><i class="fa fa-times"></i> Force Delete</button>
 								{{Form::close()}}
 							</td>
 						</tr>

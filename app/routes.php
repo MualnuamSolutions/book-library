@@ -38,6 +38,9 @@ App::error(function($exception, $code)
 
 Route::get('/', 'HomeController@index');
 Route::post('/', 'HomeController@search');
+Route::get('help', array('before'=>'auth', 'uses'=>'HomeController@help'));
+Route::get('profile', array('before'=>'auth', 'uses'=>'HomeController@profile'));
+Route::post('profile', array('before'=>'auth', 'uses'=>'HomeController@updateProfile'));
 
 Route::controller('auth', 'AuthController');
 
@@ -46,11 +49,9 @@ Route::group(['before' => 'auth|principal'], function() {
     Route::get('print-idcard/{id}', function($id){
         return View::make('idcard.print.main', array('id'=>$id));
     });
-    Route::get('dashboard', 'DashboardController@principal');
 });
 
 Route::group(['before' => 'auth|administrator'], function() {
-    Route::get('dashboard', 'DashboardController@administrator');
     Route::resource('member', 'MemberController');
     Route::get('idcard-detail/{card_no}', function($card_no){
         return View::make('idcard.detail.main', array('card_no'=>$card_no));
@@ -61,4 +62,13 @@ Route::group(['before' => 'auth|administrator'], function() {
     Route::resource('author', 'AuthorController');
     Route::resource('publisher', 'PublisherController');
     Route::resource('category', 'CategoryController');
+});
+
+Route::group(['before' => 'auth'], function() {
+    if(Auth::check()) {
+        if( Auth::user()->role == 'principal' )
+            Route::get('dashboard', 'DashboardController@principal');
+        else if( Auth::user()->role == 'administrator' ) 
+            Route::get('dashboard', 'DashboardController@administrator');
+    }
 });

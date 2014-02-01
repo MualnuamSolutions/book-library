@@ -87,4 +87,53 @@ class HomeController extends \BaseController {
 			));
 	}
 
+	public function profile()
+	{
+		return View::make( 'home.profile', array('user'=>User::find(Auth::user()->id) ));
+	}
+
+	public function updateProfile()
+	{
+		$input_data = Input::all();
+		$user = User::find(Auth::user()->id);
+		
+		$rules = array(
+			'username' => 'required|unique:users,username,' . $user->id . ',id',
+			'fullname' => 'required',
+			'picture' => 'image'
+			);
+
+		$validator = Validator::make($input_data, $rules);
+
+		if($validator->fails())
+			return Redirect::to('profile')->withErrors($validator)->withInput();
+		
+		$user->username = $input_data['username'];
+		
+		if($input_data['password'] != '')
+			$user->password = Hash::make($input_data['password']);
+		
+		$user->fullname = $input_data['fullname'];
+
+		if(Input::hasFile('picture')) {
+			$picture = Input::file('picture');
+			$filename = 'user-'.$user->id .'-'. uniqid() . '.' . $picture->getClientOriginalExtension();
+			$picture->move(public_path() . '/avatar/', $filename);
+			$user->avatar = 'avatar/' . $filename;
+		}
+
+		if(Input::get('remove_picture', null) == 1) {
+			$user->avatar = 'avatar/default-white.png';
+		}
+		
+		$user->save();
+
+		return Redirect::to("profile")->with('success','Your profile was updated.');
+	}
+
+	public function help()
+	{
+		return View::make('home.help');
+	}
+
 }

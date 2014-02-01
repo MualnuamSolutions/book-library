@@ -131,11 +131,11 @@
 							</div>
 
 							<div class="col-lg-6 col-md-6">
-								<div class="form-group {{($errors->has('category_new'))?'has-error':''}}">
+								<div class="form-group {{($errors->has('category_new') || $errors->has('category_id'))?'has-error':''}}">
 									{{ Form::label('category_id', 'Category / Subject', array('class'=>'col-sm-4 control-label')) }}
 									<div class="col-sm-6">
 										<?php
-										$categories_options = array(0 => 'No Category');
+										$categories_options = array('' => 'Select Category');
 										foreach($categories as $category)
 											$categories_options[$category->id] = $category->category_name;
 										?>
@@ -156,11 +156,11 @@
 									</div>
 								</div>
 
-								<div class="form-group {{($errors->has('author_new'))?'has-error':''}}">
+								<div class="form-group {{($errors->has('author_new') || $errors->has('author_id'))?'has-error':''}}">
 									{{ Form::label('author_id', 'Author', array('class'=>'col-sm-4 control-label')) }}
 									<div class="col-sm-6">
 										<?php
-										$authors_options = array(0 => 'No Author');
+										$authors_options = array('' => 'Select Author');
 										foreach($authors as $author)
 											$authors_options[$author->id] = $author->author_name;
 										?>
@@ -182,11 +182,11 @@
 									</div>
 								</div>
 
-								<div class="form-group {{($errors->has('publisher_new'))?'has-error':''}}">
+								<div class="form-group {{($errors->has('publisher_new') || $errors->has('publisher_id'))?'has-error':''}}">
 									{{ Form::label('publisher_id', 'Publisher', array('class'=>'col-sm-4 control-label')) }}
 									<div class="col-sm-6">
 										<?php
-										$publishers_options = array(0 => 'No Publisher');
+										$publishers_options = array('' => 'Select Publisher');
 										foreach($publishers as $publisher)
 											$publishers_options[$publisher->id] = $publisher->publisher_name;
 										?>

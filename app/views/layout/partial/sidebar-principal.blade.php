@@ -14,8 +14,7 @@
 			</a>
 			<ul class="panel-collapse collapse" id="user-menu">
 				<li><a href="{{url('profile')}}"><i class="fa fa-user"></i> Profile</a></li>
-				<!-- <li><a href="{{url('help')}}"><i class="fa fa-question-circle"></i> Help</a></li> -->
-				<li><a href="{{url('change-password')}}"><i class="fa fa-key"></i> Change Password</a></li>
+				<li><a href="{{url('help')}}"><i class="fa fa-question-circle"></i> Help</a></li>
 				<li><a href="{{url('auth/logout')}}"><i class="fa fa-sign-out"></i> Sign Out</a></li>
 			</ul>
 		</li>

@@ -26,6 +26,11 @@
 							  <p class="sub">Expired Pre Service Student</p>
 							</li>
 							<li>
+							  <label class="label-danger"><i class="fa fa-trash-o"></i></label>
+							  <h4>{{Idcard::withTrashed()->where('type','=','pre service')->count() - Idcard::where('type','=','pre service')->count()}}</h4>
+							  <p class="sub">Deleted Pre Service Student</p>
+							</li>
+							<li>
 							  <label class="label-success"><i class="fa fa-check"></i></label>
 							  <h4>{{Idcard::where('type','=','in service')->where('valid_upto','>=',DB::raw('DATE(NOW())'))->count()}}</h4>
 							  <p class="sub">Valid In Service Student</p>
@@ -34,6 +39,11 @@
 							  <label class="label-danger"><i class="fa fa-times"></i></label>
 							  <h4>{{Idcard::where('type','=','in service')->where('valid_upto','<',DB::raw('DATE(NOW())'))->count()}}</h4>
 							  <p class="sub">Expired In Service Student</p>
+							</li>
+							<li>
+							  <label class="label-danger"><i class="fa fa-trash-o"></i></label>
+							  <h4>{{Idcard::withTrashed()->where('type','=','in service')->count() - Idcard::where('type','=','in service')->count()}}</h4>
+							  <p class="sub">Deleted In Service Student</p>
 							</li>
 						 </ul>
 					</div>
@@ -49,23 +59,24 @@
 						<ul class="listing list-unstyled">
 							<li>
 							  <label class="label-success"><i class="fa fa-check"></i></label>
-							  <h4>{{Idcard::where('type','=','faculty')->where('valid_upto','>=',DB::raw('DATE(NOW())'))->count()}}</h4>
+							  <?php //$valid_faculty = Idcard::where('type','=','faculty')->count() ?>
+							  <h4>{{$valid_faculty = Idcard::where('type','=','faculty')->count()}}</h4>
 							  <p class="sub">Valid Faculty</p>
 							</li>
 							<li>
-							  <label class="label-danger"><i class="fa fa-times"></i></label>
-							  <h4>{{Idcard::where('type','=','faculty')->where('valid_upto','<',DB::raw('DATE(NOW())'))->count()}}</h4>
-							  <p class="sub">Expired Faculty</p>
+							  <label class="label-danger"><i class="fa fa-trash-o"></i></label>
+							  <h4>{{Idcard::withTrashed()->where('type','=','faculty')->count() - $valid_faculty}}</h4>
+							  <p class="sub">Deleted Faculty</p>
 							</li>
 							<li>
 							  <label class="label-success"><i class="fa fa-check"></i></label>
-							  <h4>{{Idcard::where('type','=','faculty')->where('valid_upto','>=',DB::raw('DATE(NOW())'))->count()}}</h4>
+							  <h4>{{$valid_staff = Idcard::where('type','=','staff')->count()}}</h4>
 							  <p class="sub">Valid Staff</p>
 							</li>
 							<li>
-							  <label class="label-danger"><i class="fa fa-times"></i></label>
-							  <h4>103</h4>
-							  <p class="sub">Expired Staff</p>
+							  <label class="label-danger"><i class="fa fa-trash-o"></i></label>
+							  <h4>{{Idcard::withTrashed()->where('type','=','staff')->count() - $valid_staff}}</h4>
+							  <p class="sub">Deleted Staff</p>
 							</li>
 						 </ul>
 					</div>
@@ -81,13 +92,18 @@
 						<ul class="listing list-unstyled">
 							<li>
 							  <label class="label-success"><i class="fa fa-check"></i></label>
-							  <h4>375</h4>
+							  <h4>{{Idcard::where('type','=','temporary')->where('valid_upto','>=',DB::raw('DATE(NOW())'))->count()}}</h4>
 							  <p class="sub">Valid</p>
 							</li>
 							<li>
 							  <label class="label-danger"><i class="fa fa-times"></i></label>
-							  <h4>103</h4>
+							  <h4>{{Idcard::where('type','=','temporary')->where('valid_upto','<',DB::raw('DATE(NOW())'))->count()}}</h4>
 							  <p class="sub">Expired</p>
+							</li>
+							<li>
+							  <label class="label-danger"><i class="fa fa-trash-o"></i></label>
+							  <h4>{{Idcard::withTrashed()->where('type','=','temporary')->count() - Idcard::where('type','=','temporary')->count()}}</h4>
+							  <p class="sub">Deleted</p>
 							</li>
 						 </ul>
 					</div>
