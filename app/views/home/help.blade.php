@@ -1,52 +1,67 @@
 @extends('layout.main')
 @section('content')
+<script type="text/javascript" src="{{asset('lib/flowplayer/flowplayer-3.2.13.min.js')}}"></script>
 <div class="page-header">
-	<h1>Help</h1>
+	<h1>Help Videos</h1>
 </div>
 
 <div id="content">
 	<div class="container">
-
-		<div class="row row-demo">
-			<div class="col-lg-12 col-md-12">
-				
-				<div class="row messages messages-bordered">
-					<div class="col-lg-3 col-md-3 col-sm-3 message-list">
-						<div class="message-categories">
-							<ul class="nav nav-pills nav-stacked" id="myTab">
-								<li class="active"><a href="#help_1" data-toggle="tab">Creating New ID Card</a></li>
-								<li><a href="#help_2" data-toggle="tab">Creating New Member</a></li>
-								<li><a href="#help_3" data-toggle="tab">Add New Book Entry</a></li>
-								<li><a href="#help_4" data-toggle="tab">Creating New Author</a></li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-lg-9 col-md-9 col-sm-9 message-content">								
-						<!-- Tab panes -->
-						<div class="tab-content">
-							<div class="tab-pane active" id="help_1"><div class="row">
-								<div class="col-lg-12 col-md-12 message-list">
-asd
-								</div>
-							</div>
-							<div class="tab-pane" id="help_2"><div class="row">
-								<div class="col-lg-12 col-md-12 message-list">
-asdasd
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-
-
+		<!-- Video Start -->
+		<div class="row">
+			<div class="col-lg-4 col-md-4">
+				<a
+				 href="{{asset('help-videos/author-edit.flv')}}"
+				 style="display:block;width:100%;height:250px"  
+				 id="player1"></a>
+				<h5>Author Edit</h5>
+			</div>
+			<div class="col-lg-4 col-md-4">
+				<a
+				 href="{{asset('help-videos/author-edit.flv')}}"
+				 style="display:block;width:100%;height:250px"  
+				 id="player2"></a>
+			</div>
+			<div class="col-lg-4 col-md-4">
+				<a
+				 href="{{asset('help-videos/author-edit.flv')}}"
+				 style="display:block;width:100%;height:250px"  
+				 id="player3"></a>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col-lg-4 col-md-4">
+				<a
+				 href="{{asset('help-videos/author-edit.flv')}}"
+				 style="display:block;width:100%;height:250px"  
+				 id="player4"></a>
+				<h5>Author Edit</h5>
+			</div>
+			<div class="col-lg-4 col-md-4">
+				<a
+				 href="{{asset('help-videos/author-edit.flv')}}"
+				 style="display:block;width:100%;height:250px"  
+				 id="player5"></a>
+			</div>
+			<div class="col-lg-4 col-md-4">
+				<a
+				 href="{{asset('help-videos/author-edit.flv')}}"
+				 style="display:block;width:100%;height:250px"  
+				 id="player6"></a>
+			</div>
+		</div>
+		<!-- Video End -->
 	</div>
 </div>
 
 <script type="text/javascript">
 $(function(){});
+flowplayer("player1", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
+flowplayer("player2", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
+flowplayer("player3", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
+flowplayer("player4", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
+flowplayer("player5", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
+flowplayer("player6", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
 </script>
 @stop
