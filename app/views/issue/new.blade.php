@@ -66,6 +66,8 @@ $(function(){
 	});
 });
 
+var currentMemberType;
+
 function fetchIdCard() {
 	$('#member_detail .idcard-detail').addClass('hidden');
 
@@ -76,6 +78,10 @@ function fetchIdCard() {
 		$.get('/idcard-detail/' + $("#member_card_no").val(), function(data){
 			$('#member_detail .idcard-detail .panel-body').html(data);
 			
+			$("#member_detail .membership").addClass('hidden');
+			$("#member_detail .member-status").addClass('hidden');
+			$("#member_detail .member-history").addClass('hidden');
+
 			if( $(data).text().trim() != 'Invalid ID Card or ID Card not found!') {
 				
 				$.getJSON('/member-status/' + $("#member_card_no").val(), function(memberData){
@@ -103,6 +109,8 @@ function fetchIdCard() {
 						$("#member_detail .member-history").addClass('hidden');
 					}
 					else {
+						currentMemberType = memberData.idcards.type;
+
 						// First highlight the member detail panel with blue.
 						// $("#member_detail").removeClass('panel-default').addClass('panel-info');
 						$("#member_detail").removeClass('panel-danger').addClass('panel-default');

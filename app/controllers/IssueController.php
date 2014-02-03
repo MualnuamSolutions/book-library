@@ -11,7 +11,7 @@ class IssueController extends \BaseController {
 		$input_data = Input::all();
 
 		$rules = array(
-			'member_card_no' => 'required'
+			'member_card_no' => 'required|exists:idcards,card_no'
 			);
 		$validator = Validator::make($input_data, $rules);
 

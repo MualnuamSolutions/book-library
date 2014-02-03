@@ -67,11 +67,10 @@
 						<?php $key++; ?>
 						<tr id="{{$book['barcode']}}">
 							<td>
-								<input type="hidden" name="book[{{$key}}][id]" value="{{$book['id']}}" />
+								<input type="hidden" name="book[{{$key}}][book_id]" value="{{$book['book_id']}}" />
 								<input type="hidden" name="book[{{$key}}][barcode]" value="{{$book['barcode']}}" />{{$key}}
 							</td>
 							<td><input type="hidden" name="book[{{$key}}][title]" value="{{$book['title']}}" />{{$book['title']}}</td>
-							<!-- <td width="30px"><input class="form-control input-sm" type="text" name="book[{{$key}}][copies]" value="{{$book['copies']}}" /></td> -->
 							<td width="110px"><input class="form-control input-sm" type="text" name="book[{{$key}}][due_date]" value="{{$book['due_date']}}" /></td>
 							<td><a class="btn btn-primary btn-xs remove-item" href="#" onclick="return removeItem('{{$book['barcode']}}')"><i class="fa fa-times"></i></a></td>
 						</tr>
@@ -114,8 +113,8 @@ $(function(){
 		}
 		
 	}).on('keyup', function(){
-		$("#add_book .book-preview").removeClass('hidden').html('<h1 class="text-center"><i class="fa fa-spinner fa-spin"></i></h1><p class="text-center"><em>loading book</em></p>');
-		$("#add_book .add-book-option").addClass('hidden');
+		// $("#add_book .book-preview").removeClass('hidden').html('<h1 class="text-center"><i class="fa fa-spinner fa-spin"></i></h1><p class="text-center"><em>loading book</em></p>');
+		// $("#add_book .add-book-option").addClass('hidden');
 	});
 
 	$("#add_book .add-item").on('click', function(){
@@ -170,8 +169,39 @@ function removeItem(barcode) {
 }
 
 var ctr = {{(!empty($books))?sizeof($books):0}};
+var faculty_allowed = {{get_setting('faculty_allowed')}};
+var staff_allowed = {{get_setting('staff_allowed')}};
+var student_allowed = {{get_setting('student_allowed')}};
+var temporary_allowed = {{get_setting('temporary_allowed')}};
 
 function insertRow () {
+	var currentCount = $(".member-history table.table tbody tr").size();
+	var itemCount = $("table.book-list tbody tr").size();
+	var allowedSize;
+	if(currentMemberType == 'faculty')
+		allowedSize = parseInt(faculty_allowed) - parseInt(currentCount);
+	else if(currentMemberType == 'staff')
+		allowedSize = parseInt(staff_allowed) - parseInt(currentCount);
+	else if(currentMemberType == 'student')
+		allowedSize = parseInt(student_allowed) - parseInt(currentCount);
+	else if(currentMemberType == 'temporary')
+		allowedSize = parseInt(temporary_allowed) - parseInt(currentCount);
+
+	if( parseInt($('#available').text()) <= 0 ) {
+		alert("This book cannot be added.");
+		return false;
+	}
+
+	// console.log("st"+staff_allowed);
+	// console.log("ite"+itemCount);
+	// console.log("curre"+currentCount);
+	// console.log(allowedSize);
+
+	if(itemCount >= allowedSize) {
+		alert("You can add only "+allowedSize+" books.");
+		return false;
+	}
+
 	var barcode = $("#barcode").val();
 	var book_id = $("#book_id").val();
 	var book_title = $("#book_title").text();
@@ -183,7 +213,6 @@ function insertRow () {
 	newRow += '<td><input type="hidden" name="book['+ctr+'][book_id]" value="'+book_id+'" />';
 	newRow += '<input type="hidden" name="book['+ctr+'][barcode]" value="'+barcode+'" />'+ctr+'</td>';
 	newRow += '<td><input type="hidden" name="book['+ctr+'][title]" value="'+book_title+'" />'+book_title+'</td>';
-	// newRow += '<td width="30px"><input class="form-control input-sm" type="text" name="book['+ctr+'][copies]" value="'+copies+'" /></td>';
 	newRow += '<td width="160px"><input class="form-control input-sm" type="text" name="book['+ctr+'][due_date]" value="'+due_date+'" /></td>';
 	newRow += '<td><a class="btn btn-primary btn-xs remove-item" href="#" onclick="return removeItem(\''+barcode+'\')"><i class="fa fa-times"></i></a></td>';
 	newRow += '</tr>';

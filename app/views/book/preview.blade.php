@@ -67,7 +67,7 @@
 
 <div class="row">
 	<div class="col-sm-12 text-center">
-		<h4>Copies Available in Library: <span class="badge badge-success">
+		<h4>Copies Available in Library: <span id="available" class="badge badge-success">
 			<?php
 			$issued = Transaction::whereRaw('returned_at is null')
 				->whereBookId($book->id)
