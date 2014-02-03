@@ -53,15 +53,21 @@ Route::group(['before' => 'auth|principal'], function() {
 
 Route::group(['before' => 'auth|administrator'], function() {
     Route::resource('member', 'MemberController');
+    Route::get('member-status/{card_no}', 'MemberController@status');
+    
     Route::get('idcard-detail/{card_no}', function($card_no){
         return View::make('idcard.detail.main', array('card_no'=>$card_no));
     });
+
     Route::controller('settings', 'SettingController');
     Route::resource('user', 'UserController');
     Route::resource('book', 'BookController');
+    Route::get('book-preview/{barcode}', 'BookController@preview');
     Route::resource('author', 'AuthorController');
     Route::resource('publisher', 'PublisherController');
     Route::resource('category', 'CategoryController');
+    Route::controller('issue', 'IssueController');
+    Route::get('pending-issue/{card_no}', 'IssueController@memberPendingHistory');
 });
 
 Route::group(['before' => 'auth'], function() {

@@ -26,7 +26,7 @@
 		<li {{Request::path() == '/'?'class="active"':''}}>
 			<a href="{{url('/')}}">
 				<i class="fa fa-home"></i>
-				Home
+				Browse
 			</a>
 		</li>
 		

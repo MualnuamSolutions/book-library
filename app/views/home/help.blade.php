@@ -157,21 +157,21 @@
 
 <script type="text/javascript">
 $(function(){});
-flowplayer("player1", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player2", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player3", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player4", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player5", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player6", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player7", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player8", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player9", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player10", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player11", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player12", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player13", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player14", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player15", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
-flowplayer("player16", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: true}});
+flowplayer("player1", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player2", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player3", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player4", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player5", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player6", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player7", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player8", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player9", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player10", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player11", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player12", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player13", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player14", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player15", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
+flowplayer("player16", "{{asset('lib/flowplayer/flowplayer-3.2.18.swf')}}", {clip: {autoPlay: false,autoBuffering: false}});
 </script>
 @stop

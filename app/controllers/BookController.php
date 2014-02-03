@@ -41,7 +41,8 @@ class BookController extends \BaseController {
 				
 				if( Input::get('search', null) != null ) {
 					$query->where(function($q1){
-						$q1->where('books.title', 'LIKE', "%".Input::get('search')."%");
+						$q1->where('books.barcode', 'LIKE', "%".Input::get('search')."%");
+						$q1->orWhere('books.title', 'LIKE', "%".Input::get('search')."%");
 						$q1->orWhere('authors.author_name', 'LIKE', "%".Input::get('search')."%");
 						$q1->orWhere('publishers.publisher_name', 'LIKE', "%".Input::get('search')."%");
 					});
@@ -67,7 +68,7 @@ class BookController extends \BaseController {
 			})
 			->select('books.*', 
 			'authors.author_name', 'publishers.publisher_name')
-			->orderBy('title', 'asc')->paginate();
+			->orderBy('title', 'asc')->paginate($limit);
 
 		$index = $books->getCurrentPage() > 1?$books->getCurrentPage()*$books->getPerPage():1;
 		return View::make('book.list', array(
@@ -301,6 +302,16 @@ class BookController extends \BaseController {
 		else {
 			return Redirect::route("book.index")->with('danger',"Delete failed. Book not found.");
 		}
+	}
+
+	public function preview($barcode)
+	{
+		$book = Book::with('author')->whereBarcode($barcode)->first();
+
+		if($book)
+			return View::make('book.preview', array('book'=>$book));
+		else
+			return "notfound";
 	}
 
 }

@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="col-lg-5">
-		{{ Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'put', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data')) }}
+		{{ Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'put', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data', 'autocomplete'=>'off')) }}
 			{{ Form::hidden('fa_card_no', $idcard->card_no, array('id'=>'faculty_card_no')) }}
 			{{ Form::hidden('type', 'faculty')}}
 			<div class="form-group {{($errors->has('fa_name'))?'has-error':''}}">
@@ -27,6 +27,12 @@
 					{{ Form::text('fa_contact', Input::old('fa_contact', $idcard->contact ), array('id'=>'faculty_mobile', 'placeholder'=>'Faculty contact number', 'class'=>'form-control')) }}
 				</div>
 			</div>
+			<div class="form-group {{($errors->has('fa_blood_group'))?'has-error':''}}">
+				{{ Form::label('faculty_blood_group', 'Blood Group', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::select('fa_blood_group', array('O'=>'O', 'A'=>'A', 'B'=>'B', 'AB'=>'AB'), Input::old('fa_blood_group', $idcard->blood_group), array('id'=>'faculty_blood_group', 'placeholder'=>'', 'class'=>'form-control')) }}
+				</div>
+			</div>			
 			<div class="form-group {{($errors->has('fa_present_address'))?'has-error':''}}">
 				{{ Form::label('faculty_present_address', 'Present Address', array('class'=>'col-sm-5 control-label')) }}
 				<div class="col-sm-7">
@@ -86,11 +92,12 @@
 							</div>
 						</div>
 						<div class="idcard-back">
-							<h4>Phone No: <span class="phone-no"></span></h4>
 							<h4>Present Address:</h4>
 							<pre class="present-address"></pre>
 							<h4>Permanent Address:</h4>
 							<pre class="permanent-address"></pre>
+							<h4>Phone No: <span class="phone-no"></span></h4>
+							<h4>Blood Group: <span class="blood-group"></span></h4>
 							<div class="idcard-signature">signature of issuing authority</div>
 						</div>
 					</div>
@@ -139,6 +146,11 @@ $(function(){
 	$('#faculty_idcard .phone-no').text($("#faculty_mobile").val());
 	$("#faculty_mobile").on('keyup blur', function(){
 		$('#faculty_idcard .phone-no').text($(this).val());
+	});
+	
+	$("#faculty_idcard .blood-group").text($("#faculty_blood_group").val());
+	$("#faculty_blood_group").on('change', function(){
+		$("#faculty_idcard .blood-group").text($(this).val());
 	});
 });
 

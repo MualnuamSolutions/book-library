@@ -167,4 +167,11 @@ class MemberController extends \BaseController {
 		}
 	}
 
+	public function status($card_no)
+	{
+		$member = Member::with('idcards')->whereCardNo($card_no)->first();
+
+		return Response::json($member);
+	}
+
 }

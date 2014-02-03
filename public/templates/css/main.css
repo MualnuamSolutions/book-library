@@ -1,6 +1,9 @@
 /**
 SECTION: COMMON;
 **/
+#middle {
+	padding: 0 0 60px;
+}
 /**
 END SECTION: COMMON;
 **/
@@ -281,3 +284,14 @@ SECTION: BOOKS **/
 }
 /**
 END SECTION: BOOKS **/
+
+/**
+SECTION: ISSUE **/
+.new-issue .panel-heading {
+	cursor: pointer;
+}
+.new-issue table .remove-item {
+	
+}
+/**
+END SECTION: ISSUE **/

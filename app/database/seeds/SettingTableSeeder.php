@@ -29,5 +29,25 @@ class SettingTableSeeder extends Seeder
 			'setting_key' => 'copyright',
 			'setting_data' => '&copy; Mualnuam Solutions',
 			));
+
+		Setting::create(array(
+			'setting_key' => 'faculty_allowed',
+			'setting_data' => '10',
+			));
+
+		Setting::create(array(
+			'setting_key' => 'staff_allowed',
+			'setting_data' => '8',
+			));
+
+		Setting::create(array(
+			'setting_key' => 'student_allowed',
+			'setting_data' => '5',
+			));
+
+		Setting::create(array(
+			'setting_key' => 'temporary_allowed',
+			'setting_data' => '1',
+			));
 	}
 }

@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="col-lg-5">
-		{{ Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'put', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data')) }}
+		{{ Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'put', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data', 'autocomplete'=>'off')) }}
 			{{ Form::hidden('tm_card_no', $idcard->card_no, array('id'=>'temporary_card_no')) }}
 			{{ Form::hidden('type', 'temporary')}}
 			<div class="form-group {{($errors->has('tm_name'))?'has-error':''}}">
@@ -33,6 +33,13 @@
 					{{ Form::text('tm_contact', Input::old('tm_contact', $idcard->contact), array('id'=>'temporary_mobile', 'placeholder'=>'Card holder contact number', 'class'=>'form-control')) }}
 				</div>
 			</div>
+			<div class="form-group {{($errors->has('tm_blood_group'))?'has-error':''}}">
+				{{ Form::label('temporary_blood_group', 'Blood Group', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::select('tm_blood_group', array('O'=>'O', 'A'=>'A', 'B'=>'B', 'AB'=>'AB'), Input::old('tm_blood_group', $idcard->blood_group), array('id'=>'temporary_blood_group', 'placeholder'=>'', 'class'=>'form-control')) }}
+				</div>
+			</div>			
+
 			<div class="form-group {{($errors->has('tm_present_address'))?'has-error':''}}">
 				{{ Form::label('temporary_present_address', 'Present Address', array('class'=>'col-sm-5 control-label')) }}
 				<div class="col-sm-7">
@@ -94,11 +101,12 @@
 							</div>
 						</div>
 						<div class="idcard-back">
-							<h4>Phone No: <span class="phone-no"></span></h4>
 							<h4>Present Address:</h4>
 							<pre class="present-address"></pre>
 							<h4>Permanent Address:</h4>
 							<pre class="permanent-address"></pre>
+							<h4>Phone No: <span class="phone-no"></span></h4>
+							<h4>Blood Group: <span class="blood-group"></span></h4>
 							<div class="idcard-signature">signature of issuing authority</div>
 						</div>
 					</div>
@@ -156,6 +164,11 @@ $(function(){
 	$('#temporary_idcard .phone-no').text($("#temporary_mobile").val());
 	$("#temporary_mobile").on('keyup blur', function(){
 		$('#temporary_idcard .phone-no').text($(this).val());
+	});
+
+	$("#temporary_idcard .blood-group").text($("#temporary_blood_group").val());
+	$("#temporary_blood_group").on('change', function(){
+		$("#temporary_idcard .blood-group").text($(this).val());
 	});
 });
 

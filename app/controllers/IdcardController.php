@@ -133,6 +133,7 @@ class IdcardController extends \BaseController {
 			$idcard = new Idcard();
 			$idcard->card_no = $input_data['card_no'];
 			$idcard->name = $input_data['name'];
+			$idcard->blood_group = $input_data['blood_group'];
 			$idcard->contact = $input_data['contact'];
 			$idcard->type = $input_data['type'];
 			$idcard->session = $input_data['session'];
@@ -171,6 +172,7 @@ class IdcardController extends \BaseController {
 			$idcard->card_no = $input_data['fa_card_no'];
 			$idcard->name = $input_data['fa_name'];
 			$idcard->contact = $input_data['fa_contact'];
+			$idcard->blood_group = $input_data['fa_blood_group'];
 			$idcard->designation = $input_data['fa_designation'];
 			$idcard->type = $input_data['type'];
 			$idcard->present_address = $input_data['fa_present_address'];
@@ -207,6 +209,7 @@ class IdcardController extends \BaseController {
 			$idcard->card_no = $input_data['st_card_no'];
 			$idcard->name = $input_data['st_name'];
 			$idcard->contact = $input_data['st_contact'];
+			$idcard->blood_group = $input_data['st_blood_group'];
 			$idcard->designation = $input_data['st_designation'];
 			$idcard->type = $input_data['type'];
 			$idcard->present_address = $input_data['st_present_address'];
@@ -245,6 +248,7 @@ class IdcardController extends \BaseController {
 			$idcard->name = $input_data['tm_name'];
 			$idcard->name_of_school = $input_data['tm_school'];
 			$idcard->contact = $input_data['tm_contact'];
+			$idcard->blood_group = $input_data['tm_blood_group'];
 			$idcard->type = $input_data['type'];
 			$idcard->present_address = $input_data['tm_present_address'];
 			$idcard->permanent_address = $input_data['tm_permanent_address'];
@@ -317,6 +321,7 @@ class IdcardController extends \BaseController {
 			
 			$idcard->name = $input_data['name'];
 			$idcard->contact = $input_data['contact'];
+			$idcard->blood_group = $input_data['blood_group'];
 			$idcard->session = $input_data['session'];
 			$idcard->present_address = $input_data['present_address'];
 			$idcard->permanent_address = $input_data['permanent_address'];
@@ -351,6 +356,7 @@ class IdcardController extends \BaseController {
 			
 			$idcard->name = $input_data['fa_name'];
 			$idcard->contact = $input_data['fa_contact'];
+			$idcard->blood_group = $input_data['fa_blood_group'];
 			$idcard->designation = $input_data['fa_designation'];
 			$idcard->type = $input_data['type'];
 			$idcard->present_address = $input_data['fa_present_address'];
@@ -385,6 +391,7 @@ class IdcardController extends \BaseController {
 			
 			$idcard->name = $input_data['st_name'];
 			$idcard->contact = $input_data['st_contact'];
+			$idcard->blood_group = $input_data['st_blood_group'];
 			$idcard->designation = $input_data['st_designation'];
 			$idcard->type = $input_data['type'];
 			$idcard->present_address = $input_data['st_present_address'];
@@ -421,6 +428,7 @@ class IdcardController extends \BaseController {
 			$idcard->name = $input_data['tm_name'];
 			$idcard->name_of_school = $input_data['tm_school'];
 			$idcard->contact = $input_data['tm_contact'];
+			$idcard->blood_group = $input_data['tm_blood_group'];
 			$idcard->type = $input_data['type'];
 			$idcard->present_address = $input_data['tm_present_address'];
 			$idcard->permanent_address = $input_data['tm_permanent_address'];

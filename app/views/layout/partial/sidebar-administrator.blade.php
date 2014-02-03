@@ -63,9 +63,9 @@
 		
 		<li {{Request::path() == 'issue/new'?'class="active"':''}}><a href="{{url('issue/new')}}"><i class="fa fa-cogs"></i> New Issue</a></li>
 
-		<li {{Request::path() == 'issue'?'class="active"':''}}><a href="{{url('issue')}}"><i class="fa fa-list"></i> Issue Records</a></li>
+		<li {{Request::path() == 'issue'?'class="active"':''}}><a href="{{url('issue?page=1&amp;limit=30&amp;status=active&amp;search=')}}"><i class="fa fa-list"></i> Issue Records</a></li>
 		
-		<li {{Request::path() == 'issue/return'?'class="active"':''}}><a href="{{url('issue/return')}}"><i class="fa fa-reply"></i> Return</a></li>
+		<!-- <li {{Request::path() == 'issue/return'?'class="active"':''}}><a href="{{url('issue/return')}}"><i class="fa fa-reply"></i> Return</a></li> -->
 		
 		
 		<li>
@@ -107,7 +107,7 @@
 				Publisher <b class="caret"></b>
 			</a>
 			<ul class="panel-collapse collapse {{Request::is('publisher*')?'in':''}}" id="publisher_menu">
-				<li {{Request::path() == 'publisher/create'?'class="active"':''}}><a href="{{url('publisher/create')}}"><i class="fa fa-arrow-right"></i> Pew publisher</a></li>
+				<li {{Request::path() == 'publisher/create'?'class="active"':''}}><a href="{{url('publisher/create')}}"><i class="fa fa-arrow-right"></i> New publisher</a></li>
 				<li {{Request::path() == 'publisher'?'class="active"':''}}><a href="{{url('publisher')}}"><i class="fa fa-arrow-right"></i> Publisher List</a></li>
 			</ul>
 		</li>

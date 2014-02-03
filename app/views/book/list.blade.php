@@ -28,7 +28,7 @@
 		      	</div>
 				<div class="col-lg-5">
 					<div class="input-group">
-						{{ Form::text('search', Input::get('search', null), array('placeholder'=>'Title, author, publisher', 'class'=>'form-control')) }}
+						{{ Form::text('search', Input::get('search', null), array('placeholder'=>'Barcode or Title or Author or Publisher', 'class'=>'form-control')) }}
 						<span class="input-group-btn">
 							<button class="btn btn-success" type="submit">Search</button>
 						</span>
@@ -51,7 +51,7 @@
 							<th>Author</th>
 							<th>Copies</th>
 							<th>Status</th>
-							<th></th>
+							<th width="240px"></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -61,7 +61,7 @@
 							<td>{{$book->title}}</td>
 							<td>{{$book->barcode}}</td>
 							<td>{{$book->accession_no}}</td>
-							<td>{{$book->classification}}</td>
+							<td>{{$book->classification_no}}</td>
 							<td>{{$book->author->author_name}}</td>
 							<td>{{$book->copies}}</td>
 							<td>

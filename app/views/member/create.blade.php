@@ -26,7 +26,7 @@
 									<div class="form-group">
 										<div class="col-sm-12">
 											<div class="input-group">
-												{{ Form::text('card_no_query', '', array('placeholder'=>'Enter Card Number', 'class'=>'form-control', 'id'=>'card_no_query')) }}
+												{{ Form::text('card_no_query', Input::get('card_no'), array('placeholder'=>'Enter Card Number', 'class'=>'form-control', 'id'=>'card_no_query')) }}
 												<span class="input-group-btn">
 													<button class="btn btn-success btn-disabled" id="check_id_card" type="button">Check ID Card</button>
 												</span>
@@ -64,6 +64,9 @@
 
 <script type="text/javascript">
 $(function(){
+	if($("#card_no_query").val().length)
+		fetchIdCard();
+
 	$("#check_id_card").on('click', function(ev){
 		fetchIdCard();
 	});

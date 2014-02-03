@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="col-lg-5">
-		{{ Form::open(array('url'=>'idcard', 'method'=>'post', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data')) }}
+		{{ Form::open(array('url'=>'idcard', 'method'=>'post', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data', 'autocomplete'=>'off')) }}
 			{{ Form::hidden('card_no', $ps, array('id'=>'student_card_no')) }}
 			<div class="form-group {{($errors->has('name'))?'has-error':''}}">
 				{{ Form::label('student_name', 'Name', array('class'=>'col-sm-5 control-label')) }}
@@ -36,6 +36,12 @@
 				{{ Form::label('student_mobile', 'Mobile Number', array('class'=>'col-sm-5 control-label')) }}
 				<div class="col-sm-7">
 					{{ Form::text('contact', Input::old('contact'), array('id'=>'student_mobile', 'placeholder'=>'Student contact number', 'class'=>'form-control')) }}
+				</div>
+			</div>
+			<div class="form-group {{($errors->has('blood_group'))?'has-error':''}}">
+				{{ Form::label('student_blood_group', 'Blood Group', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::select('blood_group', array('O'=>'O', 'A'=>'A', 'B'=>'B', 'AB'=>'AB'), Input::old('blood_group'), array('id'=>'student_blood_group', 'placeholder'=>'', 'class'=>'form-control')) }}
 				</div>
 			</div>
 			<div class="form-group {{($errors->has('present_address'))?'has-error':''}}">
@@ -96,11 +102,12 @@
 							</div>
 						</div>
 						<div class="idcard-back">
-							<h4>Phone No: <span class="phone-no"></span></h4>
 							<h4>Present Address:</h4>
 							<pre class="present-address"></pre>
 							<h4>Permanent Address:</h4>
 							<pre class="permanent-address"></pre>
+							<h4>Phone No: <span class="phone-no"></span></h4>
+							<h4>Blood Group: <span class="blood-group"></span></h4>
 							<div class="idcard-signature">signature of issuing authority</div>
 						</div>
 					</div>
@@ -170,6 +177,12 @@ $(function(){
 	$("#student_mobile").on('keyup blur', function(){
 		$('#student_idcard .phone-no').text($(this).val());
 	});
+
+	$("#student_idcard .blood-group").text($("#student_blood_group").val());
+	$("#student_blood_group").on('change', function(){
+		$("#student_idcard .blood-group").text($(this).val());
+	});
+
 });
 
 function student_generate_barcode(student_barcode_string) {

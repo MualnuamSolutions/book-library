@@ -68,6 +68,64 @@
 												<td align="center" width="10px">:</td>
 												<td>{{$book->isbn_no}}</td>
 											</tr>
+											<tr><td colspan="3"></td></tr>
+											<tr>
+												<td colspan="3">
+													<a data-toggle="modal" data-target="#book{{$book->id}}_modal" href="javascript:;" class="btn btn-success btn-xs" href="#">View Status</a>
+
+													<div class="modal fade book-status-view" id="book{{$book->id}}_modal" tabindex="-1" role="dialog" aria-labelledby="book{{$book->id}}_label" aria-hidden="true">
+														<div class="modal-dialog">
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+																	<h4 class="modal-title" id="book{{$book->id}}_label">Status: {{$book->title}}</h4>
+																</div>
+																<div class="modal-body">
+																	<div class="row">
+																		<div class="col-sm-12">
+																			<?php 
+																			$issues = Transaction::whereBookId($book->id)->whereRaw("returned_at is null")->get();
+																			?>
+																			<table class="table">
+																				<thead>
+																					<tr>
+																						<th>#</th>
+																						<th>Name</th>
+																						<th>Issue Date</th>
+																						<th>Due Date</th>
+																					</tr>
+																				</thead>
+																				<tbody>
+																					@if($issues->count())
+																					@foreach($issues as $key=>$issue)
+																					<tr>
+																						<td>{{$key+1}}</td>
+																						<td>
+																							{{Idcard::whereCardNo($issue->card_no)->pluck('name')}} ({{$issue->card_no}})
+																						</td>
+																						<td>{{date('d M Y', strtotime($issue->issued_at))}}</td>
+																						<td>{{date('d M Y', strtotime($issue->due_at))}}</td>
+																					</tr>
+																					@endforeach
+																					@else
+																					<tr>
+																						<td colspan="4" class="text-center"><i>All copies are in library.</i></td>
+																					</tr>
+																					@endif
+																				</tbody>
+																			</table>
+																		</div>
+																	</div>
+																</div>
+																<div class="modal-footer">
+																	<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+																</div>
+															</div><!-- /.modal-content -->
+														</div><!-- /.modal-dialog -->
+													</div><!-- /.modal -->
+
+												</td>
+											</tr>
 										</table>
 									</div>
 								</div>

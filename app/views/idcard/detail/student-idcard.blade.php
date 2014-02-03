@@ -27,11 +27,12 @@
 		</div>
 	</div>
 	<div class="idcard-back">
-		<h4>Phone No: <span class="phone-no">{{$data->contact}}</span></h4>
 		<h4>Present Address:</h4>
 		<pre class="present-address">{{$data->present_address}}</pre>
 		<h4>Permanent Address:</h4>
 		<pre class="permanent-address">{{$data->permanent_address}}</pre>
+		<h4>Phone No: <span class="phone-no">{{$data->contact}}</span></h4>
+		<h4>Blood Group: <span class="blood-group">{{$data->blood_group}}</span></h4>
 		<div class="idcard-signature">signature of issuing authority</div>
 	</div>
 </div>

@@ -16,6 +16,7 @@ class CreateIdcardsTable extends Migration {
 			$table->string('card_no');
 			$table->string('name');
 			$table->string('contact');
+			$table->string('blood_group', 5)->nullable();
 			$table->enum('type', array('pre service', 'in service', 'faculty', 'staff', 'temporary'))->default('pre service');
 			$table->string('picture')->default('avatar/default.png');
 

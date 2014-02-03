@@ -15,9 +15,10 @@ class CreateTransactionsTable extends Migration {
 			$table->increments('id');
 			$table->string('card_no');
 			$table->integer('book_id');
-			$table->string('copies');
-			$table->timestamp('issued_at');
-			$table->timestamp('returned_at');
+			$table->string('copies')->default(1);
+			$table->timestamp('issued_at')->nullable();
+			$table->timestamp('due_at')->nullable();
+			$table->timestamp('returned_at')->nullable();
 			$table->softDeletes();
 			$table->timestamps();
 		});

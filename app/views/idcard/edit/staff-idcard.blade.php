@@ -1,6 +1,6 @@
 <div class="row-fluid">
 	<div class="col-lg-5">
-		{{ Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'put', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data')) }}
+		{{ Form::open(array('url'=>url('idcard', array($idcard->id)), 'method'=>'put', 'class'=>'form-horizontal idcard-form', 'enctype'=>'multipart/form-data', 'autocomplete'=>'off')) }}
 			{{ Form::hidden('st_card_no', $idcard->card_no, array('id'=>'staff_card_no')) }}
 			{{ Form::hidden('type', 'staff')}}
 			<div class="form-group {{($errors->has('st_name'))?'has-error':''}}">
@@ -27,6 +27,13 @@
 					{{ Form::text('st_contact', Input::old('st_contact', $idcard->contact), array('id'=>'staff_mobile', 'placeholder'=>'Staff contact number', 'class'=>'form-control')) }}
 				</div>
 			</div>
+			<div class="form-group {{($errors->has('st_blood_group'))?'has-error':''}}">
+				{{ Form::label('staff_blood_group', 'Blood Group', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::select('st_blood_group', array('O'=>'O', 'A'=>'A', 'B'=>'B', 'AB'=>'AB'), Input::old('st_blood_group', $idcard->blood_group), array('id'=>'staff_blood_group', 'placeholder'=>'', 'class'=>'form-control')) }}
+				</div>
+			</div>			
+
 			<div class="form-group {{($errors->has('st_present_address'))?'has-error':''}}">
 				{{ Form::label('staff_present_address', 'Present Address', array('class'=>'col-sm-5 control-label')) }}
 				<div class="col-sm-7">
@@ -86,11 +93,12 @@
 							</div>
 						</div>
 						<div class="idcard-back">
-							<h4>Phone No: <span class="phone-no"></span></h4>
 							<h4>Present Address:</h4>
 							<pre class="present-address"></pre>
 							<h4>Permanent Address:</h4>
 							<pre class="permanent-address"></pre>
+							<h4>Phone No: <span class="phone-no"></span></h4>
+							<h4>Blood Group: <span class="blood-group"></span></h4>
 							<div class="idcard-signature">signature of issuing authority</div>
 						</div>
 					</div>
@@ -139,6 +147,11 @@ $(function(){
 	$('#staff_idcard .phone-no').text($("#staff_mobile").val());
 	$("#staff_mobile").on('keyup blur', function(){
 		$('#staff_idcard .phone-no').text($(this).val());
+	});
+
+	$("#staff_idcard .blood-group").text($("#staff_blood_group").val());
+	$("#staff_blood_group").on('change', function(){
+		$("#staff_idcard .blood-group").text($(this).val());
 	});
 });
 
