@@ -21,7 +21,7 @@ class AuthController extends \BaseController {
 		
 		if( Auth::validate($credentials) ) {
 			if( Auth::attempt($credentials, true) ) {
-				return Redirect::intended('/');
+				return Redirect::intended('/dashboard');
 			}	
 		}
 		else {

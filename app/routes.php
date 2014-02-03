@@ -23,12 +23,15 @@ App::error(function($exception, $code)
             return Response::view('error.denied', array(), 401);
 
         case 404:
-        	if( Auth::check() )
-        	return Response::view('error.notfound', array(), 404); //backend 404
-        	else
-        	return Response::view('error.default', array(), 404); //frontend 404
+            return Redirect::to('auth');
+        	// if( Auth::check() )
+        	// return Response::view('error.notfound', array(), 404); //backend 404
+        	// else
+                // return Redirect::to('auth');
+        	// return Response::view('error.default', array(), 404); //frontend 404
         case 403:
-        	return Response::view('error.forbidden', array(), 403); //unauthorized download of media content
+            return Redirect::to('auth');
+        	// return Response::view('error.forbidden', array(), 403); //unauthorized download of media content
         
         default:
         	
@@ -77,4 +80,5 @@ Route::group(['before' => 'auth'], function() {
         else if( Auth::user()->role == 'administrator' ) 
             Route::get('dashboard', 'DashboardController@administrator');
     }
+
 });

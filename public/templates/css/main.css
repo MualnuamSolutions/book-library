@@ -291,7 +291,10 @@ SECTION: ISSUE **/
 	cursor: pointer;
 }
 .new-issue table .remove-item {
-	
+
 }
 /**
 END SECTION: ISSUE **/
+.stat-block {
+	cursor: pointer;
+}

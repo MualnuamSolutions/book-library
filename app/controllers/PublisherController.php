@@ -70,7 +70,7 @@ class PublisherController extends \BaseController {
 		if($validator->fails())
 			return Redirect::route('publisher.create')->withErrors($validator)->withInput();
 		
-		$publisher = new Category();
+		$publisher = new Publisher();
 		$publisher->publisher_name = $input_data['publisher_name'];
 		$publisher->save();
 
@@ -112,7 +112,7 @@ class PublisherController extends \BaseController {
 		$publisher = Publisher::find($id);
 		
 		$rules = array(
-			'publisher_name' => 'required|unique:categories,publisher_name,' . $publisher->id . ',id'
+			'publisher_name' => 'required|unique:publishers,publisher_name,' . $publisher->id . ',id'
 			);
 		$validator = Validator::make($input_data, $rules);
 
@@ -122,7 +122,7 @@ class PublisherController extends \BaseController {
 		$publisher->publisher_name = $input_data['publisher_name'];
 		$publisher->save();
 
-		return Redirect::route("publisher.index")->with('success','Category name updated.');
+		return Redirect::route("publisher.index")->with('success','Publisher name updated.');
 	}
 
 	/**
