@@ -21,11 +21,22 @@
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<div class="stat-block stat-success" onclick="document.location='{{url('issue?page=1&amp;limit=30&amp;status=active&amp;search=')}}'">
 							<div class="icon">
-								<i class="fa fa-group"></i>
+								<i class="fa fa-cog"></i>
 							</div>
 							<div class="details">
 								<div class="number">{{Transaction::whereRaw('returned_at is null')->count()}}</div>
 								<div class="description">Current Issue</div>
+							</div>               
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+						<div class="stat-block stat-info" onclick="document.location='{{url('issue')}}'">
+							<div class="icon">
+								<i class="fa fa-cogs"></i>
+							</div>
+							<div class="details">
+								<div class="number">{{Transaction::count()}}</div>
+								<div class="description">Total Issues</div>
 							</div>               
 						</div>
 					</div>
@@ -41,17 +52,6 @@
 								<div class="description">                           
 									Total Books
 								</div>
-							</div>               
-						</div>
-					</div>
-					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-						<div class="stat-block stat-info" onclick="document.location='{{url('issue')}}'">
-							<div class="icon">
-								<i class="fa fa-cogs"></i>
-							</div>
-							<div class="details">
-								<div class="number">{{Transaction::count()}}</div>
-								<div class="description">Total Issues</div>
 							</div>               
 						</div>
 					</div>

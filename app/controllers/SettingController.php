@@ -15,7 +15,11 @@ class SettingController extends BaseController {
 			'district' => 'required',
 			'district_code' => 'required',
 			'copyright' => 'required',
-			'logo' => 'image'
+			'logo' => 'image',
+			'faculty_allowed' => 'required',
+			'staff_allowed' => 'required',
+			'student_allowed' => 'required',
+			'temporary_allowed' => 'required'
 			);
 		$validator = Validator::make($input_data, $rules);
 
@@ -26,6 +30,10 @@ class SettingController extends BaseController {
 		Setting::whereSettingKey('district')->update(array('setting_data'=>$input_data['district']));
 		Setting::whereSettingKey('district_code')->update(array('setting_data'=>$input_data['district_code']));
 		Setting::whereSettingKey('copyright')->update(array('setting_data'=>$input_data['copyright']));
+		Setting::whereSettingKey('faculty_allowed')->update(array('setting_data'=>$input_data['faculty_allowed']));
+		Setting::whereSettingKey('staff_allowed')->update(array('setting_data'=>$input_data['staff_allowed']));
+		Setting::whereSettingKey('student_allowed')->update(array('setting_data'=>$input_data['student_allowed']));
+		Setting::whereSettingKey('temporary_allowed')->update(array('setting_data'=>$input_data['temporary_allowed']));
 
 		if(Input::hasFile('logo')) {			
 			$logo = Input::file('logo');

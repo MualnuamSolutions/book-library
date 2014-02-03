@@ -7,12 +7,12 @@ class SettingTableSeeder extends Seeder
 		
 		Setting::create(array(
 			'setting_key' => 'site_title',
-			'setting_data' => 'Mualnuam Library Management Software',
+			'setting_data' => 'Library Management Software',
 			));
 
 		Setting::create(array(
 			'setting_key' => 'district',
-			'setting_data' => 'Aizawl',
+			'setting_data' => 'District Name',
 			));
 
 		Setting::create(array(
@@ -27,7 +27,7 @@ class SettingTableSeeder extends Seeder
 
 		Setting::create(array(
 			'setting_key' => 'copyright',
-			'setting_data' => '&copy; Mualnuam Solutions',
+			'setting_data' => '&copy; Copyright',
 			));
 
 		Setting::create(array(
