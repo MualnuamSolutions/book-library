@@ -64,23 +64,23 @@
 							
 							<td class="action">
 								@if($transaction->deleted_at == null && $transaction->returned_at != null)
-								<a href="{{url('issue/cancel-return/' . $transaction->id)}}" class="tooltip-top btn btn-warning btn-xs restore-button" title="Restore Book"><i class="fa fa-undo"></i> Cancel Return</a>
+								<a href="{{url('issue/cancel-return/' . $transaction->id)}}" class="tooltip-top btn btn-warning btn-xs restore-button" title="Cancel Return Issue"><i class="fa fa-undo"></i> Cancel</a>
 								@endif
 
 								@if($transaction->deleted_at == null && $transaction->returned_at == null)
-								<a href="{{url('issue/return/' . $transaction->id)}}" class="tooltip-top btn btn-success btn-xs restore-button" title="Restore Book"><i class="fa fa-mail-reply"></i> Return</a>
+								<a href="{{url('issue/return/' . $transaction->id)}}" class="tooltip-top btn btn-success btn-xs restore-button" title="Return Issue"><i class="fa fa-mail-reply"></i> Return</a>
 								@endif
 
 								@if($transaction->deleted_at != null)
-								<a href="{{url('issue/restore/' . $transaction->id)}}" class="tooltip-top btn btn-primary btn-xs restore-button" title="Restore Book"><i class="fa fa-undo"></i> Restore</a>
+								<a href="{{url('issue/restore/' . $transaction->id)}}" class="tooltip-top btn btn-primary btn-xs restore-button" title="Restore Deleted Issue"><i class="fa fa-undo"></i> Restore</a>
 								@endif
 								
 								@if($transaction->deleted_at == null)
-								<a href="{{url('issue/delete/' . $transaction->id)}}" class="tooltip-top btn btn-danger btn-xs" title="Delete Book"><i class="fa fa-times"></i> Delete</a>
+								<a href="{{url('issue/delete/' . $transaction->id)}}" class="tooltip-top btn btn-danger btn-xs" title="Delete Issue"><i class="fa fa-times"></i> Delete</a>
 								@endif
 
 								@if($transaction->deleted_at != null)
-								<a href="{{url('issue/force/' . $transaction->id)}}" class="tooltip-top btn btn-danger btn-xs force-delete-button" title="Delete Book Permanently"><i class="fa fa-times"></i> Force Delete</a>
+								<a href="{{url('issue/force/' . $transaction->id)}}" class="tooltip-top btn btn-danger btn-xs force-delete-button" title="Delete Issue Permanently"><i class="fa fa-times"></i> Force Delete</a>
 								@endif
 							</td>
 						</tr>
