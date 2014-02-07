@@ -21,7 +21,7 @@
 					{{ Form::select('status', array(''=>'All Status', 'active'=>'Active', 'deleted'=>'Deleted'), Input::get('status', $search_criteria['status']), array('class'=>'form-control', 'id'=>'status')) }}
 		      	</div>
 				<div class="col-lg-2">
-					{{ Form::select('classification_no', $classifications, Input::get('classification_no'), array('class'=>'form-control', 'id'=>'classification_no')) }}
+					{{ Form::select('classification_no', $classifications, Input::get('classification_no', 0), array('class'=>'form-control', 'id'=>'classification_no')) }}
 		      	</div>
 				<div class="col-lg-2">
 					{{ Form::select('category_id', $categories, Input::get('category_id', 0), array('class'=>'form-control', 'id'=>'category_id')) }}

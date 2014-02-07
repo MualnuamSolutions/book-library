@@ -9,7 +9,7 @@
 
 	<title>{{get_setting('site_title')}}</title>
 
-	<link rel='stylesheet' type='text/css' href="{{asset('templates/fonts/hyper/all.css')}}">
+	<!--<link rel='stylesheet' type='text/css' href="{{asset('templates/fonts/hyper/all.css')}}">-->
 	
 	<!-- Bootstrap core CSS -->
 	<link href="{{ asset('templates/hyper/bootstrap/css/bootstrap.min.css?v=3.0.2')}}" rel="stylesheet">

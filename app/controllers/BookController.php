@@ -9,7 +9,7 @@ class BookController extends \BaseController {
 	 */
 	public function index()
 	{
-		$classifications_options = array(''=>'All Classification');
+		$classifications_options = array('0'=>'All Classification');
 		$classifications = DB::table('books')->distinct()->get(array('classification_no'));
 		foreach($classifications as $classification)
 			$classifications_options[$classification->classification_no] = $classification->classification_no;
@@ -17,8 +17,7 @@ class BookController extends \BaseController {
 		$categories_options = array('0'=>'All Categories');
 		$categories = Category::orderBy('category_name', 'asc')->get();
 		foreach($categories as $category)
-			$categories_options[$category->category_id] = $category->category_name;
-
+			$categories_options[$category->id] = $category->category_name;
 
 		$limit = Input::get('limit', Input::get('limit', 30));
 
@@ -26,7 +25,7 @@ class BookController extends \BaseController {
 			'search' => Input::get('search', null),
 			'status' => Input::get('status', 'active'),
 			'category_id' => Input::get('category_id', 0),
-			'classification_no' => Input::get('classification_no', null),
+			'classification_no' => Input::get('classification_no', 0),
 			'limit' => $limit
 			);
 
@@ -48,7 +47,7 @@ class BookController extends \BaseController {
 					});
 				}
 
-				if( Input::get('classification_no', null) != null ) {
+				if( Input::get('classification_no') != null && Input::get('classification_no') != 0 ) {
 					$query->where('classification_no', 'LIKE', Input::get('classification_no') . "%");
 				}
 

@@ -10,14 +10,6 @@
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="row">
-					<div class="col-lg-12 text-center text-danger">
-						<h1>Released by Director School Education</h1>
-						<h3><b>Venue: SCERT</b></h3>
-						<h3><b>Date - 4<sup>th</sup> February 2014, 10:30AM</b></h3>
-						<hr>
-					</div>	
-				</div>
-				<div class="row">
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 						<div class="stat-block stat-success" onclick="document.location='{{url('issue?page=1&amp;limit=30&amp;status=active&amp;search=')}}'">
 							<div class="icon">
