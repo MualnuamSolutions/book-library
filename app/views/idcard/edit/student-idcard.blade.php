@@ -99,6 +99,7 @@
 									<p><span class="idcard-label">Session</span><span class="idcard-separator">:</span><span class="idcard-value session"></span></p>
 									<p><span class="idcard-label">Date of Issue</span><span class="idcard-separator">:</span><span class="idcard-value issue"></span></p>
 									<p><span class="idcard-label">Valid Upto</span><span class="idcard-separator">:</span><span style="color:red" class="idcard-value validity"></span></p>
+									<p><span class="idcard-label">Blood Group</span><span class="idcard-separator">:</span><span class="idcard-value blood-group"></span></p>
 								</div>
 							</div>
 							<div class="idcard-footer">
@@ -111,8 +112,15 @@
 							<h4>Permanent Address:</h4>
 							<pre class="permanent-address"></pre>
 							<h4>Phone No: <span class="phone-no"></span></h4>
-							<h4>Blood Group: <span class="blood-group"></span></h4>
 							<div class="idcard-signature">signature of issuing authority</div>
+							<div class="terms">
+								<hr>
+								<ol>
+									<li>This card is the property of the Govt. of Mizoram</li>
+									<li>Transfer of this card to another person is a punishable crime</li>
+									<li>Loss will be reported immediately</li>
+								</ol>
+							</div>
 						</div>
 					</div>
 
@@ -189,7 +197,7 @@ $(function(){
 });
 
 function student_generate_barcode(student_barcode_string) {
-	$("#student_idcard .idcard-barcode").barcode(student_barcode_string, 'code128', {barHeight:18, fontSize:11});
+	$("#student_idcard .idcard-barcode").barcode(student_barcode_string, 'code128', {barHeight:12, fontSize:10});
 	$("#student_card_no").val(student_barcode_string);
 }
 </script>

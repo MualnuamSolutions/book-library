@@ -18,7 +18,7 @@
 		@endif
 		<script type="text/javascript">
 		$(function(){
-			$("#idcard_{{$idcard->id}} .idcard-barcode").barcode('{{$idcard->card_no}}', 'code128', {barHeight:18, fontSize:11});
+			$("#idcard_{{$idcard->id}} .idcard-barcode").barcode('{{$idcard->card_no}}', 'code128', {barHeight:12, fontSize:10});
 		});
 		</script>		
 	@else

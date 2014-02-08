@@ -99,12 +99,12 @@ SECTION: ID CARD**/
 	float: left !important;	
 }
 .idcard .idcard-front .idcard-body .idcard-detail p {
-	font-size: 10px !important;
+	font-size: 9px !important;
 	font-family: Tahoma !important;
 	padding: 0 !important;
 	margin: 0 !important;
 	vertical-align: top !important;
-	line-height: 15px !important;
+	line-height: 13px !important;
 	float: left !important;
 	width: 100% !important;
 	color: #111 !important;
@@ -124,7 +124,7 @@ SECTION: ID CARD**/
 .idcard .idcard-front .idcard-footer {
 	float: left !important;
 	width: 100% !important;
-	height: 45px !important;
+	height: 30px !important;
 	padding: 0 0 5px !important;
 }
 .idcard .idcard-front .idcard-footer .idcard-barcode {
@@ -145,7 +145,7 @@ SECTION: ID CARD**/
 	position: relative !important;
 }
 .idcard .idcard-back h4 {
-	font-size: 10px !important;
+	font-size: 8px !important;
 	text-transform: uppercase !important;
 	font-family: Arial !important;
 	margin: 0 !important;
@@ -155,8 +155,8 @@ SECTION: ID CARD**/
 }
 .idcard .idcard-back pre {
 	font-family: Arial !important;
-	font-size: 10px !important;
-	line-height: 15px !important;
+	font-size: 9px !important;
+	line-height: 13px !important;
 	margin: 0 !important;
 	padding: 0 !important;
 	background: none !important;
@@ -169,14 +169,28 @@ SECTION: ID CARD**/
 	border:none !important;
 }
 .idcard .idcard-back .idcard-signature {
-	font-size: 10px !important;
+	font-size: 9px !important;
 	font-family: Arial !important;
 	color: #111 !important;
 	line-height: 12px !important;
 	position: absolute !important;
-	right: 8px !important;
-	bottom: 8px !important;
+	right: 10px !important;
+	bottom: 57px !important;
 }
-
+.idcard .idcard-back .terms {
+	position: absolute !important;
+	bottom: 10px !important;
+	width: 275px !important;
+}
+.idcard .idcard-back .terms ol {
+	padding: 5px 0 0 14px !important;
+	margin: 0 !important;
+}
+.idcard .idcard-back .terms li {
+	margin: 0 !important;
+	padding: 0 !important;
+	font-size: 9px !important;
+	color: red !important;
+}
 /**
 END SECTION: ID CARD*
