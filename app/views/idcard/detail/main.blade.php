@@ -6,9 +6,6 @@
 		@if($idcard->type == 'pre service' || $idcard->type == 'in service')
 		@include('idcard.detail.student-idcard', array('data'=>$idcard))
 
-		@elseif($idcard->type == 'faculty')
-		@include('idcard.detail.faculty-idcard', array('data'=>$idcard))
-
 		@elseif($idcard->type == 'staff')
 		@include('idcard.detail.staff-idcard', array('data'=>$idcard))
 

@@ -17,7 +17,6 @@
 							<!-- Nav tabs -->
 							<ul class="nav nav-pills">
 								<li{{ $card_type == "student"?' class="active"':'' }}><a href="#student">Student</a></li>
-								<li{{ $card_type == "faculty"?' class="active"':'' }}><a href="#faculty">Faculty</a></li>
 								<li{{ $card_type == "staff"?' class="active"':'' }}><a href="#staff">Staff</a></li>
 								<li{{ $card_type == "temporary"?' class="active"':'' }}><a href="#temporary">Temporary</a></li>
 							</ul>
@@ -27,9 +26,6 @@
 					<div class="panel-body">
 						<div class="student" {{ $card_type != "student"?'style="display: none;"':'' }}>
 							@include('idcard.create.student-idcard')
-						</div>
-						<div class="faculty" {{ $card_type != "faculty"?'style="display: none;"':'' }}>
-							@include('idcard.create.faculty-idcard')
 						</div>
 						<div class="staff" {{ $card_type != "staff"?'style="display: none;"':'' }}>
 							@include('idcard.create.staff-idcard')

@@ -18,8 +18,6 @@
 					<div class="panel-body">
 						@if($idcard->type == 'pre service' || $idcard->type == 'in service')
 							@include('idcard.edit.student-idcard')
-						@elseif($idcard->type == 'faculty')
-							@include('idcard.edit.faculty-idcard')
 						@elseif($idcard->type == 'staff')
 							@include('idcard.edit.staff-idcard')
 						@elseif($idcard->type == 'temporary')

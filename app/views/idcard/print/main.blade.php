@@ -12,9 +12,6 @@ $ctr = 0;
 	@if($idcard->type == 'pre service' || $idcard->type == 'in service')
 	@include('idcard.print.student-idcard', array('data'=>$idcard))
 
-	@elseif($idcard->type == 'faculty')
-	@include('idcard.print.faculty-idcard', array('data'=>$idcard))
-
 	@elseif($idcard->type == 'staff')
 	@include('idcard.print.staff-idcard', array('data'=>$idcard))
 

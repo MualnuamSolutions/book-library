@@ -77,8 +77,7 @@
 						<div class="idcard-front">
 							<div class="idcard-header">
 								<div class="idcard-pillar"><img src="{{ asset('images/ashoka-pillar.png') }}"></div>
-								<span class="idcard-title">DISTRICT INSTITUTE OF EDUCATION AND TRAINING</span>
-								<span>GOVERNMENT OF MIZORAM. {{ strtoupper(get_setting('district')) }}</span>
+								<span class="idcard-title">STATE COUNCIL OF EDUCATIONAL RESEARCH AND TRAINING. GOVERNMENT OF MIZORAM</span>
 								<h3>IDENTITY CARD</h3>
 							</div>
 							<div class="idcard-body">

@@ -193,6 +193,9 @@ class IdcardController extends \BaseController {
 		else if($input_data['type'] == 'staff') {
 			$rules = array(
 				'st_name' => 'required',
+				'st_father_name' => 'required',
+				'st_date_of_birth' => 'required',
+				'st_id_mark' => 'required',
 				'st_date_of_issue' => 'required',
 				'st_contact' => 'required',
 				'st_designation' => 'required',
@@ -208,6 +211,9 @@ class IdcardController extends \BaseController {
 			$idcard = new Idcard();
 			$idcard->card_no = $input_data['st_card_no'];
 			$idcard->name = $input_data['st_name'];
+			$idcard->father_name = $input_data['st_father_name'];
+			$idcard->id_mark = $input_data['st_id_mark'];
+			$idcard->date_of_birth = $input_data['st_date_of_birth'];
 			$idcard->contact = $input_data['st_contact'];
 			$idcard->blood_group = $input_data['st_blood_group'];
 			$idcard->designation = $input_data['st_designation'];
@@ -377,6 +383,9 @@ class IdcardController extends \BaseController {
 		elseif($idcard->type == 'staff') {
 			$rules = array(
 				'st_name' => 'required',
+				'st_father_name' => 'required',
+				'st_date_of_birth' => 'required',
+				'st_id_mark' => 'required',
 				'st_date_of_issue' => 'required',
 				'st_contact' => 'required',
 				'st_designation' => 'required',
@@ -390,6 +399,9 @@ class IdcardController extends \BaseController {
 				return Redirect::route('idcard.edit', array($idcard->id, 'card_type'=>'staff'))->withErrors($validator)->withInput();
 			
 			$idcard->name = $input_data['st_name'];
+			$idcard->father_name = $input_data['st_father_name'];
+			$idcard->id_mark = $input_data['st_id_mark'];
+			$idcard->date_of_birth = $input_data['st_date_of_birth'];
 			$idcard->contact = $input_data['st_contact'];
 			$idcard->blood_group = $input_data['st_blood_group'];
 			$idcard->designation = $input_data['st_designation'];

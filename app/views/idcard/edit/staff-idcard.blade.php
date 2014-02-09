@@ -9,6 +9,24 @@
 					{{ Form::text('st_name', Input::old('st_name', $idcard->name), array('id'=>'staff_name', 'placeholder'=>'Name of staff', 'class'=>'form-control')) }}
 				</div>
 			</div>
+			<div class="form-group {{($errors->has('st_father_name'))?'has-error':''}}">
+				{{ Form::label('staff_father_name', 'Father\'s Name', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::text('st_father_name', Input::old('st_father_name', $idcard->father_name), array('id'=>'staff_father_name', 'placeholder'=>'', 'class'=>'form-control')) }}
+				</div>
+			</div>
+			<div class="form-group {{($errors->has('st_date_of_birth'))?'has-error':''}}">
+				{{ Form::label('staff_date_of_birth', 'Date of Birth', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::text('st_date_of_birth', Input::old('st_date_of_birth', $idcard->date_of_birth), array('id'=>'staff_date_of_birth', 'placeholder'=>'Date of Birth', 'class'=>'form-control')) }}
+				</div>
+			</div>
+			<div class="form-group {{($errors->has('st_id_mark'))?'has-error':''}}">
+				{{ Form::label('staff_id_mark', 'Identification Mark', array('class'=>'col-sm-5 control-label')) }}
+				<div class="col-sm-7">
+					{{ Form::text('st_id_mark', Input::old('st_id_mark', $idcard->id_mark), array('id'=>'staff_id_mark', 'placeholder'=>'', 'class'=>'form-control')) }}
+				</div>
+			</div>
 			<div class="form-group {{($errors->has('st_designation'))?'has-error':''}}">
 				{{ Form::label('staff_designation', 'Designation', array('class'=>'col-sm-5 control-label')) }}
 				<div class="col-sm-7">
@@ -70,8 +88,7 @@
 						<div class="idcard-front">
 							<div class="idcard-header">
 								<div class="idcard-pillar"><img src="{{ asset('images/ashoka-pillar.png') }}"></div>
-								<span class="idcard-title">DISTRICT INSTITUTE OF EDUCATION AND TRAINING</span>
-								<span>GOVERNMENT OF MIZORAM. {{ strtoupper(get_setting('district')) }}</span>
+								<span class="idcard-title">STATE COUNCIL OF EDUCATIONAL RESEARCH AND TRAINING. GOVERNMENT OF MIZORAM</span>
 								<h3>IDENTITY CARD</h3>
 							</div>
 							<div class="idcard-body">
@@ -84,9 +101,11 @@
 								</div>
 								<div class="idcard-detail">
 									<p><span class="idcard-label">Name</span><span class="idcard-separator">:</span><span class="idcard-value name"></span></p>
+									<p><span class="idcard-label">Father's Name</span><span class="idcard-separator">:</span><span class="idcard-value father-name"></span></p>
 									<p><span class="idcard-label">Designation</span><span class="idcard-separator">:</span><span class="idcard-value designation"></span></p>
 									<p><span class="idcard-label">Date of Issue</span><span class="idcard-separator">:</span><span class="idcard-value issue"></span></p>
 									<p><span class="idcard-label">Blood Group</span><span class="idcard-separator">:</span><span class="idcard-value blood-group"></span></p>
+									<p><span class="idcard-label">Date of Birth</span><span class="idcard-separator">:</span><span class="idcard-value dob"></span></p>
 								</div>
 							</div>
 							<div class="idcard-footer">
@@ -99,6 +118,8 @@
 							<h4>Permanent Address:</h4>
 							<pre class="permanent-address"></pre>
 							<h4>Phone No: <span class="phone-no"></span></h4>
+							<h4>Identification Mark: <span class="id-mark"></span></h4>
+							<div class="idcard-logo"><img src="{{ asset('images/logo.jpg') }}" height="40px" width="41px"></div>
 							<div class="idcard-signature">signature of issuing authority</div>
 							<div class="terms">
 								<hr>

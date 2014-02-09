@@ -15,6 +15,8 @@ class CreateIdcardsTable extends Migration {
 			$table->increments('id');
 			$table->string('card_no');
 			$table->string('name');
+			$table->string('father_name')->nullable();
+			$table->string('id_mark')->nullable();
 			$table->string('contact');
 			$table->string('blood_group', 5)->nullable();
 			$table->enum('type', array('pre service', 'in service', 'faculty', 'staff', 'temporary'))->default('pre service');
@@ -27,6 +29,7 @@ class CreateIdcardsTable extends Migration {
 			$table->string('name_of_school')->nullable(); // For temporary teacher only
 
 			$table->date('date_of_issue');	
+			$table->string('date_of_birth')->nullable();	
 			$table->date('valid_upto')->nullable();
 			$table->softDeletes();
 			$table->timestamps();

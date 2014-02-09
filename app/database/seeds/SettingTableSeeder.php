@@ -49,5 +49,10 @@ class SettingTableSeeder extends Seeder
 			'setting_key' => 'temporary_allowed',
 			'setting_data' => '1',
 			));
+
+		Setting::create(array(
+			'setting_key' => 'contact_no',
+			'setting_data' => '0389 2347790',
+			));
 	}
 }

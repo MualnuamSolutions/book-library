@@ -153,6 +153,10 @@ SECTION: ID CARD**/
 	color:#111 !important;
 	font-weight: bold !important;
 }
+.idcard .idcard-back h4 span {
+	font-weight: normal !important;
+	text-transform: none !important;
+}
 .idcard .idcard-back pre {
 	font-family: Arial !important;
 	font-size: 9px !important;
@@ -192,5 +196,11 @@ SECTION: ID CARD**/
 	font-size: 9px !important;
 	color: red !important;
 }
+.idcard .idcard-back .idcard-logo {
+	position: absolute !important;
+	top: 6px !important;
+	right: 6px !important;
+}
+
 /**
 END SECTION: ID CARD*

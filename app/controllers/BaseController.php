@@ -21,7 +21,7 @@ class BaseController extends Controller {
 			'' => 'All ID Card Types',
 			'pre service' => 'Pre Service Student',
 			'in service' => 'In Service Student',
-			'faculty' => 'Faculty',
+			// 'faculty' => 'Faculty',
 			'staff' => 'Staff',
 			'temporary' => 'Temporary'
 			);
