@@ -53,7 +53,7 @@ class MemberController extends \BaseController {
 		->select('members.*', 
 			'idcards.name', 'idcards.type', 'idcards.valid_upto', 'idcards.date_of_issue',
 			'idcards.contact', 'idcards.picture', 'idcards.session', 'idcards.present_address', 
-			'idcards.permanent_address', 'idcards.designation', 'idcards.name_of_school')
+			'idcards.permanent_address', 'idcards.designation', 'idcards.name_of_school', 'idcards.blood_group')
 		->orderBy('members.card_no', 'asc')->paginate($limit);
 
 		$index = $members->getCurrentPage() > 1?$members->getCurrentPage()*$members->getPerPage():1;

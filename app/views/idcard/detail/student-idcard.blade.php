@@ -20,7 +20,7 @@
 				<p><span class="idcard-label">Session</span><span class="idcard-separator">:</span><span class="idcard-value session">{{$data->session}}</span></p>
 				<p><span class="idcard-label">Date of Issue</span><span class="idcard-separator">:</span><span class="idcard-value issue">{{$data->date_of_issue}}</span></p>
 				<p><span class="idcard-label">Valid Upto</span><span class="idcard-separator">:</span><span style="color:red !important;" class="idcard-value validity">{{$data->valid_upto}}</span></p>
-				<p><span class="idcard-label">Blood Group</span><span class="idcard-separator">:</span><span class="idcard-value blood-group"></span></p>
+				<p><span class="idcard-label">Blood Group</span><span class="idcard-separator">:</span><span class="idcard-value blood-group">{{$data->blood_group}}</span></p>
 			</div>
 		</div>
 		<div class="idcard-footer">
