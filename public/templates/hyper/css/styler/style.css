@@ -1757,6 +1757,7 @@ body {
   margin-bottom: -1px;
   border-radius: 0;
   -webkit-border-radius: 0;
+  padding: 0 12px;
 }
 .signin-page .form-signin .form-control:first-child {
   border-radius: 2px 2px 0 0;
