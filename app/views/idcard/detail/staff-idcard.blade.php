@@ -18,7 +18,7 @@
 						<p><span class="idcard-label">Father's Name</span><span class="idcard-separator">:</span><span class="idcard-value father-name">{{$data->father_name}}</span></p>
 						<p><span class="idcard-label">Designation</span><span class="idcard-separator">:</span><span class="idcard-value designation">{{$data->designation}}</span></p>
 						<p><span class="idcard-label">Date of Issue</span><span class="idcard-separator">:</span><span class="idcard-value issue">{{$data->date_of_issue}}</span></p>
-						<p><span class="idcard-label">Blood Group</span><span class="idcard-separator">:</span><span class="idcard-value blood-group">{{$data->blood_group}}</span></p>
+						<p><span class="idcard-label">Blood Groups</span><span class="idcard-separator">:</span><span class="idcard-value blood-group">{{$data->blood_group}}</span></p>
 						<p><span class="idcard-label">Date of Birth</span><span class="idcard-separator">:</span><span class="idcard-value dob">{{$data->date_of_birth}}</span></p>
 					</div>
 				</div>

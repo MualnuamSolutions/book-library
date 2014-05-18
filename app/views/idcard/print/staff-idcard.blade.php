@@ -20,7 +20,6 @@
 						<p><span class="idcard-label">Date of Issue</span><span class="idcard-separator">:</span><span class="idcard-value issue">{{$data->date_of_issue}}</span></p>
 						<p><span class="idcard-label">Blood Group</span><span class="idcard-separator">:</span><span class="idcard-value blood-group">{{$data->blood_group}}</span></p>
 						<p><span class="idcard-label">Date of Birth</span><span class="idcard-separator">:</span><span class="idcard-value dob">{{$data->date_of_birth}}</span></p>
-						<p><span class="idcard-label">Identification Mark</span><span class="idcard-separator">:</span><span class="idcard-value id-mark">{{$data->id_mark}}</span></p>
 					</div>
 				</div>
 				<div class="idcard-footer">
